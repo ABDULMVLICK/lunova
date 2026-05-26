@@ -1,26 +1,332 @@
 @import "tailwindcss";
 
+/* ============================================================
+   LUNOVA — DESIGN TOKENS
+   Source de vérité unique. Voir Brand Book 2026 + extensions.
+   ============================================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ----- PALETTE BRAND (5 couleurs absolues du brand book) ----- */
+  --color-ivoire: #f9f5f2;
+  --color-noir: #1a1a1a;
+  --color-terracotta: #c9726b;
+  --color-peche: #e8d5c4;
+  --color-blanc: #ffffff;
+
+  /* ----- TERRACOTTA — états et variante accessible ----- */
+  /* #C9726B échoue WCAG AA sur texte normal (3.17:1 sur ivoire).
+     Utiliser -deep pour les liens texte et tout texte non-large. */
+  --color-terracotta-deep: #b44a41;       /* AA texte normal sur ivoire/blanc */
+  --color-terracotta-hover: #b85e57;      /* hover bouton primaire */
+  --color-terracotta-active: #a64f48;     /* :active */
+  --color-terracotta-soft: #f1ddd9;       /* fond très léger, badges info */
+
+  /* ----- NEUTRES (extension nécessaire pour bordures/UI) ----- */
+  /* Calés sur la chaleur de l'ivoire — pas de gris froid. */
+  --color-stone-50: #f6f1ed;
+  --color-stone-100: #ece4dc;
+  --color-stone-200: #d9cec3;
+  --color-stone-300: #b9aea1;
+  --color-stone-400: #8a8076;
+  --color-stone-500: #635c54;
+  --color-stone-600: #423d37;
+  --color-stone-700: #2b2825;
+
+  /* ----- SÉMANTIQUES (sobres, cohérentes avec la palette chaude) ----- */
+  --color-success: #5d8a6b;
+  --color-success-soft: #e3ecdf;
+  --color-warning: #c89556;
+  --color-warning-soft: #f5e9d6;
+  --color-error: #b44a41;                 /* = terracotta-deep, cohérence */
+  --color-error-soft: #f1ddd9;
+  --color-info: #6b8a9e;
+  --color-info-soft: #dfe7ed;
+
+  /* ----- ALIAS SÉMANTIQUES (utiliser ceux-ci dans les composants) ----- */
+  --background: var(--color-ivoire);
+  --surface: var(--color-blanc);          /* cartes, modales */
+  --surface-alt: var(--color-peche);      /* sections alternées */
+  --foreground: var(--color-noir);
+  --foreground-muted: var(--color-stone-500);
+  --foreground-subtle: var(--color-stone-400);
+  --border: var(--color-stone-200);
+  --border-strong: var(--color-noir);
+  --ring: var(--color-terracotta);        /* focus ring */
+  --primary: var(--color-terracotta);
+  --primary-foreground: var(--color-blanc);
+  --link: var(--color-terracotta-deep);
+
+  /* ----- TYPOGRAPHIE ----- */
+  --font-display: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Tailles fluides (clamp pour responsive sans media queries) */
+  --text-h1: clamp(2.25rem, 1.5rem + 3.5vw, 3.25rem);    /* 36 → 52 */
+  --text-h2: clamp(1.75rem, 1.3rem + 2vw, 2.25rem);      /* 28 → 36 */
+  --text-h3: 1.25rem;                                     /* 20 */
+  --text-body: 1rem;                                      /* 16 */
+  --text-small: 0.8125rem;                                /* 13 */
+  --text-badge: 0.6875rem;                                /* 11 */
+
+  /* Line-heights — display serré, corps aéré */
+  --lh-display: 1.1;
+  --lh-heading: 1.2;
+  --lh-body: 1.6;
+  --lh-tight: 1.4;
+
+  /* Letter-spacing — Playfair serré, Inter badge tracké */
+  --tracking-display: -0.02em;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-badge: 0.08em;
+
+  /* ----- RADIUS (coins arrondis partout — brand book) ----- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* ----- OMBRES (douces, jamais agressives) ----- */
+  --shadow-xs: 0 1px 2px 0 rgb(26 26 26 / 0.04);
+  --shadow-sm: 0 2px 6px -1px rgb(26 26 26 / 0.06), 0 1px 2px -1px rgb(26 26 26 / 0.04);
+  --shadow-md: 0 6px 16px -4px rgb(26 26 26 / 0.08), 0 2px 6px -2px rgb(26 26 26 / 0.04);
+  --shadow-lg: 0 16px 36px -8px rgb(26 26 26 / 0.10), 0 4px 10px -4px rgb(26 26 26 / 0.04);
+  --shadow-xl: 0 28px 60px -12px rgb(26 26 26 / 0.14);
+  --shadow-focus: 0 0 0 3px rgb(201 114 107 / 0.30);
+
+  /* ----- MOTION (premium = transitions soignées) ----- */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 600ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);            /* premium feel */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ----- LAYOUT ----- */
+  --container-max: 1200px;
+  --container-padding: clamp(1rem, 4vw, 2.5rem);
+  --section-py: clamp(4rem, 8vw, 7rem);
 }
 
+/* ============================================================
+   Mapping Tailwind v4 — expose les tokens en utilitaires Tailwind
+   ============================================================ */
 @theme inline {
+  /* Couleurs nommées */
+  --color-ivoire: var(--color-ivoire);
+  --color-noir: var(--color-noir);
+  --color-terracotta: var(--color-terracotta);
+  --color-terracotta-deep: var(--color-terracotta-deep);
+  --color-terracotta-hover: var(--color-terracotta-hover);
+  --color-terracotta-active: var(--color-terracotta-active);
+  --color-terracotta-soft: var(--color-terracotta-soft);
+  --color-peche: var(--color-peche);
+  --color-blanc: var(--color-blanc);
+
+  /* Neutres */
+  --color-stone-50: var(--color-stone-50);
+  --color-stone-100: var(--color-stone-100);
+  --color-stone-200: var(--color-stone-200);
+  --color-stone-300: var(--color-stone-300);
+  --color-stone-400: var(--color-stone-400);
+  --color-stone-500: var(--color-stone-500);
+  --color-stone-600: var(--color-stone-600);
+  --color-stone-700: var(--color-stone-700);
+
+  /* Sémantiques */
+  --color-success: var(--color-success);
+  --color-success-soft: var(--color-success-soft);
+  --color-warning: var(--color-warning);
+  --color-warning-soft: var(--color-warning-soft);
+  --color-error: var(--color-error);
+  --color-error-soft: var(--color-error-soft);
+  --color-info: var(--color-info);
+  --color-info-soft: var(--color-info-soft);
+
+  /* Alias sémantiques */
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-link: var(--link);
+
+  /* Fonts */
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  /* Tailles */
+  --text-h1: var(--text-h1);
+  --text-h2: var(--text-h2);
+  --text-h3: var(--text-h3);
+  --text-body: var(--text-body);
+  --text-small: var(--text-small);
+  --text-badge: var(--text-badge);
+
+  /* Radius */
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+
+  /* Ombres */
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+
+  /* Animations */
+  --animate-pulse-dot: pulseDot 1.4s var(--ease-in-out) infinite;
+  --animate-fade-up: fadeUp 0.6s var(--ease-out) both;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================
+   BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  line-height: var(--lh-display);
+}
+
+h2 {
+  font-size: var(--text-h2);
+  line-height: var(--lh-heading);
+}
+
+h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h3);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-normal);
+  font-weight: 500;
+}
+
+p {
+  line-height: var(--lh-body);
+}
+
+/* Focus visible — toujours terracotta, jamais bleu générique */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-sm);
+  transition: box-shadow var(--duration-fast) var(--ease-out);
+}
+
+::selection {
+  background: var(--color-terracotta-soft);
+  color: var(--color-noir);
+}
+
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-terracotta);
+  z-index: 100;
+  transition: width var(--duration-fast) linear;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.4; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.loader-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: var(--color-terracotta);
+  animation: var(--animate-pulse-dot);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   UTILITAIRES PROJET
+   ============================================================ */
+.container-lunova {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.section-py {
+  padding-block: var(--section-py);
+}
+
+.badge-lunova {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-badge);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-badge);
+  line-height: 1;
 }
