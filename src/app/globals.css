@@ -192,6 +192,8 @@
   /* Animations */
   --animate-pulse-dot: pulseDot 1.4s var(--ease-in-out) infinite;
   --animate-fade-up: fadeUp 0.6s var(--ease-out) both;
+  --animate-accordion-down: accordionDown var(--duration-base) var(--ease-out);
+  --animate-accordion-up: accordionUp var(--duration-base) var(--ease-out);
 }
 
 /* ============================================================
@@ -288,6 +290,27 @@ p {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes accordionDown {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+
+@keyframes accordionUp {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+
+/* Respiration douce — utilisé sur le CTA primaire pour suggérer la chaleur */
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(201 114 107 / 0.0), var(--shadow-sm); }
+  50%      { box-shadow: 0 0 0 10px rgb(201 114 107 / 0.0), 0 4px 14px rgb(201 114 107 / 0.35); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 .loader-dot {
   width: 12px;
   height: 12px;
@@ -329,4 +352,32 @@ p {
   text-transform: uppercase;
   letter-spacing: var(--tracking-badge);
   line-height: 1;
+}
+
+/* Card lift au hover — pour les cards de section */
+.card-lift {
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Respiration sur les CTA primaires importants — subtle, pas envahissant */
+.breathe {
+  animation: breathe 3.6s var(--ease-in-out) infinite;
+}
+
+/* Effet shimmer pour skeleton / accents premium */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 114, 107, 0) 0%,
+    rgba(201, 114, 107, 0.15) 50%,
+    rgba(201, 114, 107, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
 }

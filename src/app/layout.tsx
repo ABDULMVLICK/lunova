@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { ScrollProgress } from "@/components/motion/scroll-progress";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -48,9 +49,11 @@ export default function RootLayout({
     <html
       lang="fr"
       className={`${playfair.variable} ${inter.variable}`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-background text-foreground antialiased">
+        <ScrollProgress />
         {children}
       </body>
     </html>
