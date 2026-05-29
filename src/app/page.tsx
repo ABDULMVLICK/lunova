@@ -12,6 +12,10 @@ import {
   Feather,
   CheckCircle2,
   X,
+  Briefcase,
+  Moon,
+  Footprints,
+  Home as HomeIcon,
 } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -27,8 +31,8 @@ import {
 import { FadeIn } from "@/components/motion/fade-in";
 import { Stagger, StaggerChild } from "@/components/motion/stagger";
 import { Counter } from "@/components/motion/counter";
-import { HeatRipple } from "@/components/motion/heat-ripple";
 import { AnimatedStars } from "@/components/motion/animated-stars";
+import { ProductVisual } from "@/components/product/product-visual";
 import { product, formatPrice } from "@/lib/product";
 import { reviews } from "@/lib/reviews";
 import { faqFlat } from "@/lib/faq";
@@ -86,12 +90,11 @@ export default function Home() {
 
             {/* Visuel produit avec ondes de chaleur */}
             <FadeIn delay={0.2} y={24} className="relative">
-              <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-surface shadow-lg ring-1 ring-border/60">
-                <HeatRipple />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-display text-8xl text-stone-200">L</span>
-                </div>
-              </div>
+              <ProductVisual
+                video={product.hero.video}
+                image={product.hero.image}
+                priority
+              />
             </FadeIn>
           </Container>
         </section>
@@ -161,7 +164,7 @@ export default function Home() {
                 {
                   Icon: Clock3,
                   title: "1. Tu allumes",
-                  body: "Un seul bouton, quatre niveaux de chaleur. La diffusion commence en moins d’une minute.",
+                  body: "Un seul bouton, cinq niveaux de chaleur. La diffusion commence en moins d’une minute.",
                 },
                 {
                   Icon: Heart,
@@ -204,7 +207,7 @@ export default function Home() {
               {[
                 {
                   Icon: Thermometer,
-                  title: "4 niveaux de chaleur",
+                  title: "5 niveaux de chaleur",
                   body: "Du doux au plus chaud, selon ton intensité de douleur du jour.",
                 },
                 {
@@ -225,6 +228,49 @@ export default function Home() {
               ].map(({ Icon, title, body }) => (
                 <StaggerChild key={title}>
                   <article className="card-lift h-full rounded-xl border border-border bg-surface p-6">
+                    <Icon className="mb-5 text-terracotta" size={26} strokeWidth={1.5} />
+                    <h3 className="mb-2 text-h3">{title}</h3>
+                    <p className="text-small text-foreground-muted">{body}</p>
+                  </article>
+                </StaggerChild>
+              ))}
+            </Stagger>
+          </Container>
+        </section>
+
+        {/* IDÉAL POUR — 4 usages */}
+        <section className="section-py">
+          <Container>
+            <FadeIn className="mb-12 max-w-2xl">
+              <Badge variant="outline" className="mb-4">Idéale partout</Badge>
+              <h2>Là où la bouillotte te lâche, Lunova reste.</h2>
+            </FadeIn>
+
+            <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>
+              {[
+                {
+                  Icon: Briefcase,
+                  title: "Au bureau",
+                  body: "Sous ton pull, personne ne voit rien. Tu te concentres au lieu de subir.",
+                },
+                {
+                  Icon: Moon,
+                  title: "La nuit",
+                  body: "Coupure auto après 15 ou 30 minutes. Tu t’endors apaisée.",
+                },
+                {
+                  Icon: Footprints,
+                  title: "En déplacement",
+                  body: "Tu marches, tu prends le métro, tu bouges. La chaleur reste constante.",
+                },
+                {
+                  Icon: HomeIcon,
+                  title: "À la maison",
+                  body: "Canapé, lit, lecture. Les jours difficiles deviennent juste des jours.",
+                },
+              ].map(({ Icon, title, body }) => (
+                <StaggerChild key={title}>
+                  <article className="card-lift h-full rounded-xl bg-surface p-6 shadow-sm">
                     <Icon className="mb-5 text-terracotta" size={26} strokeWidth={1.5} />
                     <h3 className="mb-2 text-h3">{title}</h3>
                     <p className="text-small text-foreground-muted">{body}</p>
@@ -308,6 +354,62 @@ export default function Home() {
               <Button variant="secondary" asChild>
                 <Link href="/avis">Lire les {product.reviewsCount.toLocaleString("fr-FR")} avis</Link>
               </Button>
+            </FadeIn>
+          </Container>
+        </section>
+
+        {/* CE QU'ON NE TE PROMET PAS — anti-marketing honnête */}
+        <section className="section-py">
+          <Container className="max-w-3xl">
+            <FadeIn className="mb-12 text-center">
+              <Badge variant="outline" className="mb-4">L’honnêteté avant tout</Badge>
+              <h2>Ce qu’on ne te promet pas.</h2>
+              <p className="mt-6 text-foreground-muted text-lg">
+                Le marketing du bien-être adore les superlatifs. Nous, on
+                préfère te dire ce que Lunova <em>n’est pas</em>.
+              </p>
+            </FadeIn>
+
+            <Stagger className="flex flex-col gap-4" stagger={0.1}>
+              {[
+                {
+                  no: "Un soulagement instantané.",
+                  yes: "La chaleur arrive en 30 secondes. Le soulagement, en quelques minutes — et ça change déjà ta journée.",
+                },
+                {
+                  no: "Le remplacement d’un médecin.",
+                  yes: "Si tes douleurs sont chroniques ou intenses, parles-en à ton ou ta gynéco. Lunova accompagne, elle ne diagnostique pas.",
+                },
+                {
+                  no: "Une cure miracle.",
+                  yes: "Lunova soulage les symptômes par la chaleur ciblée. Elle ne traite pas la cause biologique de tes règles.",
+                },
+                {
+                  no: "La fin des règles.",
+                  yes: "On ne fait pas de magie. On te donne juste de quoi mieux les vivre — discrètement, partout, longtemps.",
+                },
+              ].map(({ no, yes }) => (
+                <StaggerChild key={no}>
+                  <article className="card-lift rounded-xl border border-border bg-surface p-6">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-6">
+                      <div className="flex shrink-0 items-start gap-2 sm:w-1/3">
+                        <X size={20} strokeWidth={2} className="mt-0.5 shrink-0 text-stone-400" />
+                        <p className="font-medium text-foreground line-through decoration-stone-300 decoration-1">
+                          {no}
+                        </p>
+                      </div>
+                      <p className="text-foreground-muted sm:flex-1">{yes}</p>
+                    </div>
+                  </article>
+                </StaggerChild>
+              ))}
+            </Stagger>
+
+            <FadeIn delay={0.2} className="mt-12 rounded-xl bg-terracotta-soft p-8 text-center">
+              <p className="font-display text-h3 leading-tight text-foreground sm:text-h2">
+                Ce qu’on te promet : de la chaleur ciblée, douce et discrète,
+                pendant des heures. C’est déjà énorme.
+              </p>
             </FadeIn>
           </Container>
         </section>

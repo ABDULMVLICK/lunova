@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { CartButton } from "@/components/cart/cart-button";
 
 const NAV = [
   { href: "/comment-ca-marche", label: "Comment ça marche" },
@@ -10,8 +11,8 @@ const NAV = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/85 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/85 backdrop-blur-md">
+      <Container className="flex h-16 items-center justify-between gap-4">
         <Link
           href="/"
           className="font-display text-2xl tracking-[-0.02em] text-foreground"
@@ -31,9 +32,12 @@ export function Header() {
           ))}
         </nav>
 
-        <Button size="sm" asChild>
-          <Link href="/produit">Je me soulage</Link>
-        </Button>
+        <div className="flex items-center gap-2">
+          <CartButton />
+          <Button size="sm" className="hidden sm:inline-flex" asChild>
+            <Link href="/produit">Je me soulage</Link>
+          </Button>
+        </div>
       </Container>
     </header>
   );

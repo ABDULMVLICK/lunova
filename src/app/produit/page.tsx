@@ -19,52 +19,54 @@ import {
 } from "@/components/ui/accordion";
 import { FadeIn } from "@/components/motion/fade-in";
 import { Stagger, StaggerChild } from "@/components/motion/stagger";
-import { HeatRipple } from "@/components/motion/heat-ripple";
 import { AnimatedStars } from "@/components/motion/animated-stars";
 import { Counter } from "@/components/motion/counter";
+import { AddToCartButton } from "@/components/product/add-to-cart-button";
 import { ColorSelector } from "@/components/product/color-selector";
+import { ProductGallery } from "@/components/product/product-gallery";
+import { ProductStateProvider } from "@/components/product/product-state";
+import { StickyCta } from "@/components/product/sticky-cta";
+import { filterExistingImages } from "@/lib/media";
 import { product, formatPrice } from "@/lib/product";
 import { faqFlat } from "@/lib/faq";
 
 export const metadata = {
   title: "Lunova — Ceinture chauffante 8 h pour douleurs menstruelles",
   description:
-    "Chaleur ciblée, 4 niveaux de température, 4 modes de massage. Discrète sous tes vêtements. Livraison offerte, essai 30 nuits.",
+    "Chaleur ciblée, 5 niveaux de température, 4 modes de massage. 157 g, discrète sous tes vêtements. Livraison offerte, essai 30 nuits.",
 };
 
-export default function ProduitPage() {
+export default async function ProduitPage() {
+  // Ne montre que les images qui existent vraiment dans /public/product/
+  const availableImages = await filterExistingImages(product.images);
+
+  // Mapping coloris → index de l'image principale à afficher.
+  // Calcul automatique : pour chaque coloris, on trouve la 1re image dont le
+  // fichier contient le slug du coloris (lunova-ivoire.* → ivoire, …).
+  const colorToImageIdx: Record<string, number> = {};
+  for (const c of product.colors) {
+    const idx = availableImages.findIndex((img) =>
+      img.src.toLowerCase().includes(`-${c.id}.`)
+    );
+    if (idx >= 0) colorToImageIdx[c.id] = idx;
+  }
+
   return (
-    <>
+    <ProductStateProvider
+      images={availableImages}
+      colorToImageIdx={colorToImageIdx}
+      defaultColorId={product.colors[0].id}
+    >
       <Header />
 
       <main>
         {/* GALERIE + INFOS PRODUIT */}
         <section className="section-py">
           <Container className="grid gap-12 md:grid-cols-2 md:gap-16">
-            {/* Galerie */}
-            <FadeIn className="flex flex-col gap-4">
-              <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-surface shadow-lg ring-1 ring-border/60">
-                <HeatRipple />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-display text-8xl text-stone-200">L</span>
-                </div>
-              </div>
-              <Stagger className="grid grid-cols-4 gap-3" stagger={0.06}>
-                {product.images.map((img, i) => (
-                  <StaggerChild key={i}>
-                    <button
-                      type="button"
-                      className="card-lift aspect-square w-full rounded-lg bg-surface shadow-sm ring-1 ring-border transition-all hover:ring-noir flex items-center justify-center"
-                      aria-label={img.alt}
-                    >
-                      <span className="font-display text-2xl text-stone-200">
-                        {i + 1}
-                      </span>
-                    </button>
-                  </StaggerChild>
-                ))}
-              </Stagger>
-            </FadeIn>
+              {/* Galerie interactive */}
+              <FadeIn>
+                <ProductGallery />
+              </FadeIn>
 
             {/* Infos */}
             <Stagger className="flex flex-col gap-6" stagger={0.08}>
@@ -110,10 +112,10 @@ export default function ProduitPage() {
               <StaggerChild>
                 <ul className="flex flex-col gap-2">
                   {[
-                    "4 niveaux de chaleur — du doux au plus intense",
+                    "5 niveaux de chaleur — du doux au plus intense",
                     "4 modes de massage par vibrations basse fréquence",
-                    "Recharge USB simple — câble fourni",
-                    "Profil fin, ajustable, discret sous un pull",
+                    "157 g, sangle de 60 à 170 cm — convient à toutes",
+                    "Recharge USB · câble 1,5 m fourni",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-small">
                       <CheckCircle2 size={18} strokeWidth={1.75} className="mt-0.5 shrink-0 text-terracotta" />
@@ -129,9 +131,7 @@ export default function ProduitPage() {
               </StaggerChild>
 
               <StaggerChild className="flex flex-col gap-3 pt-2">
-                <Button size="lg" className="breathe">
-                  Ajouter au panier — {formatPrice(product.price)}
-                </Button>
+                <AddToCartButton fullWidth />
                 <p className="text-center text-small text-foreground-muted">
                   Expédiée sous 24 h · Livraison 2 à 4 jours
                 </p>
@@ -163,7 +163,7 @@ export default function ProduitPage() {
               <StaggerChild as="p">
                 Sa résistance chauffante monte en température en moins de
                 30 secondes et maintient une chaleur stable et douce sur tout
-                ton cycle d’utilisation. Quatre niveaux pour s’adapter à ton
+                ton cycle d’utilisation. Cinq niveaux pour s’adapter à ton
                 intensité, quatre modes de vibration basse fréquence pour
                 détendre les muscles du bas-ventre.
               </StaggerChild>
@@ -193,9 +193,9 @@ export default function ProduitPage() {
 
             <Stagger className="grid gap-8 md:grid-cols-2" stagger={0.08}>
               <SpecGroup title="Chaleur">
-                <Spec label="Niveaux" value="4 — du doux au plus intense" />
+                <Spec label="Niveaux" value="5 — du doux au plus intense" />
                 <Spec label="Montée" value="Moins de 30 secondes" />
-                <Spec label="Coupure auto" value="Par sécurité en usage prolongé" />
+                <Spec label="Coupure auto" value="15 ou 30 min, selon le programme" />
               </SpecGroup>
 
               <SpecGroup title="Massage">
@@ -204,20 +204,22 @@ export default function ProduitPage() {
               </SpecGroup>
 
               <SpecGroup title="Recharge">
-                <Spec label="Type" value="USB — câble fourni" />
-                <Spec label="Tension" value="Basse tension, &lt; 50 V" />
+                <Spec label="Type" value="USB — câble 1,5 m fourni" />
+                <Spec label="Tension" value="3,7 V (basse tension)" />
+                <Spec label="Puissance" value="10 W" />
               </SpecGroup>
 
               <SpecGroup title="Confort & taille">
-                <Spec label="Matière" value="ABS + TPR thermoplastique" />
-                <Spec label="Doublure" value="Tissu doux côté peau" />
-                <Spec label="Sangle" value="Ajustable, taille unique" />
+                <Spec label="Poids" value="157,5 g" />
+                <Spec label="Dimensions" value="18,5 × 8,5 × 1,5 cm" />
+                <Spec label="Matière" value="ABS + textile ergonomique" />
+                <Spec label="Sangle" value="Ajustable de 60 à 170 cm" />
                 <Spec label="Coloris" value="Ivoire · Rose nude" />
               </SpecGroup>
 
               <SpecGroup title="Sécurité">
-                <Spec label="Tension" value="&lt; 50 V — usage quotidien sûr" />
-                <Spec label="Coupure" value="Automatique en cas de durée prolongée" />
+                <Spec label="Tension" value="3,7 V — usage quotidien sûr" />
+                <Spec label="Coupure" value="Automatique après 15 ou 30 min" />
               </SpecGroup>
 
               <SpecGroup title="Dans la boîte">
@@ -270,9 +272,7 @@ export default function ProduitPage() {
                   Prête à ne plus subir le premier jour ?
                 </h2>
                 <div className="mt-10">
-                  <Button size="lg" className="breathe">
-                    Ajouter au panier — {formatPrice(product.price)}
-                  </Button>
+                  <AddToCartButton />
                 </div>
                 <p className="mt-6 text-small text-blanc/60">
                   Livraison offerte · Essai 30 nuits · Garantie 2 ans
@@ -283,8 +283,9 @@ export default function ProduitPage() {
         </section>
       </main>
 
+      <StickyCta />
       <Footer />
-    </>
+    </ProductStateProvider>
   );
 }
 

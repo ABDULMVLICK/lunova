@@ -74,7 +74,7 @@ export const faq: FaqCategory[] = [
     items: [
       {
         q: "Combien de niveaux de chaleur ?",
-        a: "Quatre niveaux progressifs, du doux au plus chaud. Tu choisis selon l’intensité de tes douleurs du jour.",
+        a: "Cinq niveaux progressifs, du doux au plus chaud. Tu choisis selon l’intensité de tes douleurs du jour.",
       },
       {
         q: "À quoi servent les modes massage ?",

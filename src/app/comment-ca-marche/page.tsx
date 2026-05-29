@@ -114,7 +114,7 @@ export default function CommentCaMarchePage() {
                   Icon: Power,
                   title: "3. Tu allumes",
                   body:
-                    "Un appui sur le bouton central l’allume. Chaque appui suivant passe au niveau supérieur — quatre niveaux au total. Un appui long active le mode massage.",
+                    "Un appui sur le bouton central l’allume. Chaque appui suivant passe au niveau supérieur — cinq niveaux au total. Un appui long active le mode massage.",
                 },
                 {
                   Icon: Clock3,

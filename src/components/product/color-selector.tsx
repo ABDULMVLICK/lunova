@@ -1,16 +1,17 @@
 "use client";
 
-import * as React from "react";
 import { motion } from "motion/react";
 import { Check } from "lucide-react";
 import { product } from "@/lib/product";
+import { useProductState } from "@/components/product/product-state";
 
 /**
- * Sélecteur de coloris interactif — anneau noir animé qui suit la sélection.
+ * Sélecteur de coloris interactif. Lit/écrit dans ProductStateProvider :
+ * un clic met à jour le coloris ET swap l'image principale de la galerie.
  */
 export function ColorSelector() {
-  const [selected, setSelected] = React.useState(product.colors[0].id);
-  const current = product.colors.find((c) => c.id === selected) ?? product.colors[0];
+  const { colorId, setColorId } = useProductState();
+  const current = product.colors.find((c) => c.id === colorId) ?? product.colors[0];
 
   return (
     <div className="flex flex-col gap-3">
@@ -20,12 +21,12 @@ export function ColorSelector() {
       </p>
       <div className="flex gap-3">
         {product.colors.map((c) => {
-          const isSelected = c.id === selected;
+          const isSelected = c.id === colorId;
           return (
             <button
               key={c.id}
               type="button"
-              onClick={() => setSelected(c.id)}
+              onClick={() => setColorId(c.id)}
               aria-label={c.label}
               aria-pressed={isSelected}
               className="relative h-12 w-12 rounded-full ring-1 ring-border transition-shadow duration-[var(--duration-base)] hover:shadow-md focus-visible:outline-none"

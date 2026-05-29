@@ -18,16 +18,29 @@ export const product = {
     { id: "ivoire", label: "Ivoire", hex: "#F1ECE5" },
     { id: "rose", label: "Rose nude", hex: "#E8D5C4" },
   ],
+  // ----- MÉDIAS HERO -----
+  // Coloris ivoire en main : aligné brand book "féminin sans rose bonbon".
+  hero: {
+    image: {
+      src: "/product/lunova-ivoire.jpg",
+      alt: "Ceinture chauffante Lunova ivoire, posée sur fond clair",
+    },
+  } as {
+    video?: { src: string; poster?: string; alt?: string };
+    image?: { src: string; alt: string };
+  },
+  // Galerie PDP — ivoire en main, rose comme variante
   images: [
-    { src: "/product/lunova-1.jpg", alt: "Lunova vue de face, fond ivoire" },
-    { src: "/product/lunova-2.jpg", alt: "Lunova vue de profil, détail bouton de commande" },
-    { src: "/product/lunova-3.jpg", alt: "Lunova porté sous un pull, discret" },
-    { src: "/product/lunova-4.jpg", alt: "Détail tissu doux et fermeture" },
+    { src: "/product/lunova-ivoire.jpg", alt: "Ceinture Lunova ivoire, vue de face sur fond clair" },
+    { src: "/product/lunova-rose.jpg", alt: "Ceinture Lunova rose nude, vue de face sur fond clair" },
+    { src: "/product/lunova-coloris.jpg", alt: "Les deux coloris Lunova : ivoire et rose nude" },
+    { src: "/product/lunova-cable.png", alt: "Ceinture Lunova ivoire avec son câble de recharge USB" },
+    { src: "/product/lunova-unboxing.jpg", alt: "Ceinture Lunova dans son écrin, à l’ouverture" },
   ],
   specs: {
     chaleur: {
-      niveaux: 4,
-      description: "4 niveaux progressifs — du doux au plus chaud, selon ton intensité",
+      niveaux: 5,
+      description: "5 niveaux progressifs — du doux au plus chaud, selon ton intensité",
       delai: "Chauffe en moins de 30 secondes",
     },
     massage: {
@@ -35,17 +48,20 @@ export const product = {
       description: "4 modes de vibration basse fréquence, combinables avec la chaleur",
     },
     batterie: {
-      autonomie: "Plusieurs heures par charge selon le mode utilisé",
-      recharge: "Recharge USB — câble fourni",
+      tension: "3,7 V — basse tension, usage quotidien sûr",
+      puissance: "10 W",
+      recharge: "Recharge USB — câble 1,5 m fourni",
     },
     confort: {
-      matiere: "ABS + TPR thermoplastique, doublure douce contre la peau",
-      taille: "Sangle ajustable, taille unique pour la majorité des morphologies",
+      poids: "157,5 g",
+      dimensions: "18,5 × 8,5 × 1,5 cm",
+      matiere: "ABS + textile ergonomique, doublure douce contre la peau",
+      taille: "Sangle ajustable de 60 à 170 cm — convient à toutes les morphologies",
       discretion: "Profil fin — se porte sous un pull ou une chemise",
     },
     securite: {
-      arret: "Coupure de sécurité automatique pendant l’utilisation prolongée",
-      tension: "Basse tension (< 50 V) — sans danger pour un usage quotidien",
+      arret: "Coupure automatique après 15 ou 30 minutes (selon le programme)",
+      tension: "Basse tension (3,7 V) — sans danger pour un usage quotidien",
     },
   },
   boite: [
@@ -64,7 +80,7 @@ export const product = {
     delay: "2 à 4 jours ouvrés",
     carrier: "Colissimo suivi",
   },
-} as const;
+};
 
 export function formatPrice(cents: number, currency = product.currency) {
   return new Intl.NumberFormat("fr-FR", {

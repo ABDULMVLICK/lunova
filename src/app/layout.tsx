@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
+import { CartDrawer } from "@/components/cart/cart-drawer";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -55,6 +56,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-background text-foreground antialiased">
         <ScrollProgress />
         {children}
+        <CartDrawer />
       </body>
     </html>
   );
