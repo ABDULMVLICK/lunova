@@ -266,9 +266,17 @@ export default function Home() {
         {/* IDÉAL POUR — 4 usages */}
         <section className="section-py">
           <Container>
-            <FadeIn className="mb-12 max-w-2xl">
-              <Badge variant="outline" className="mb-4">Idéale partout</Badge>
-              <h2>Là où la bouillotte te lâche, Lunova reste.</h2>
+            <FadeIn className="mb-12 grid items-end gap-6 md:grid-cols-[1fr_auto]">
+              <div className="max-w-2xl">
+                <Badge variant="outline" className="mb-4">Idéale partout</Badge>
+                <h2>Là où la bouillotte te lâche, Lunova reste.</h2>
+              </div>
+              <Link
+                href="/produit"
+                className="hidden text-small text-link underline underline-offset-4 md:inline"
+              >
+                Voir le produit →
+              </Link>
             </FadeIn>
 
             <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>

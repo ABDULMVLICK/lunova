@@ -2,6 +2,9 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { CartButton } from "@/components/cart/cart-button";
+import { Logo } from "@/components/brand/logo";
+import { MobileMenu } from "@/components/layout/mobile-menu";
+import { AnnouncementBar } from "@/components/layout/announcement-bar";
 
 const NAV = [
   { href: "/comment-ca-marche", label: "Comment ça marche" },
@@ -11,14 +14,16 @@ const NAV = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/85 backdrop-blur-md">
+    <>
+      <AnnouncementBar />
+      <header className="sticky top-0 z-40 w-full border-b border-border bg-background/85 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Link
-          href="/"
-          className="font-display text-2xl tracking-[-0.02em] text-foreground"
-        >
-          Lunova
-        </Link>
+        <div className="flex items-center gap-2">
+          <MobileMenu items={NAV} />
+          <Link href="/" aria-label="Lunova — accueil">
+            <Logo />
+          </Link>
+        </div>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
           {NAV.map((item) => (
@@ -39,6 +44,7 @@ export function Header() {
           </Button>
         </div>
       </Container>
-    </header>
+      </header>
+    </>
   );
 }

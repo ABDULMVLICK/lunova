@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
+import { Logo } from "@/components/brand/logo";
 
 /**
  * Footer minimaliste — 4 liens max, logo centré (brand book).
@@ -15,11 +16,8 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
       <Container className="flex flex-col items-center gap-6 py-12 text-center">
-        <Link
-          href="/"
-          className="font-display text-3xl tracking-[-0.02em] text-foreground"
-        >
-          Lunova
+        <Link href="/" aria-label="Lunova — accueil">
+          <Logo size="lg" />
         </Link>
 
         <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">

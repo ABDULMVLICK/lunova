@@ -20,19 +20,27 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Lunova — La chaleur qui te soulage, partout, pendant 8h",
+    default: "Lunova — La ceinture chauffante qui te soulage, sans antidouleurs",
     template: "%s · Lunova",
   },
   description:
-    "Tu mérites de vivre normalement pendant tes règles. Lunova diffuse une chaleur douce et constante pendant 8 heures, discrète sous tes vêtements.",
+    "Chaleur ciblée 5 niveaux, 4 modes de massage, discrète sous tes vêtements. Premier cycle ou remboursée. Livraison offerte en 2 à 4 jours.",
   metadataBase: new URL("https://lunova.fr"),
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Lunova — La chaleur qui te soulage",
+    title: "Lunova — Pour les femmes qui refusent de dépendre des antidouleurs",
     description:
-      "Chaleur douce et constante pendant 8h. Discrète sous tes vêtements.",
+      "Chaleur ciblée 5 niveaux, 4 modes de massage. Discrète. Premier cycle ou remboursée.",
     type: "website",
     locale: "fr_FR",
+    siteName: "Lunova",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lunova — La ceinture chauffante qui te soulage",
+    description: "Premier cycle ou remboursée. Livraison offerte.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
