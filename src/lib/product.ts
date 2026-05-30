@@ -5,9 +5,9 @@
 
 export const product = {
   name: "Lunova",
-  tagline: "La ceinture chauffante qui te soulage, partout, pendant 8 heures.",
-  price: 4900,                  // en centimes
-  comparePrice: 6900,           // prix barré
+  tagline: "La solution choisie par les femmes qui refusent de dépendre des antidouleurs.",
+  price: 4400,                  // en centimes — stratégie conversion 44€
+  comparePrice: 5900,           // prix barré → -25%
   currency: "EUR",
   sku: "LUNOVA-001",
   stock: 87,                    // valeur réelle, pas de fake urgency
@@ -18,6 +18,48 @@ export const product = {
     { id: "ivoire", label: "Ivoire", hex: "#F1ECE5" },
     { id: "rose", label: "Rose nude", hex: "#E8D5C4" },
   ],
+  // ----- BUNDLES -----
+  bundles: [
+    {
+      id: "solo",
+      quantity: 1,
+      price: 4400,        // 44€
+      compareTotal: 4400,
+      discount: 0,
+      title: "Une ceinture",
+      tagline: "Pour découvrir Lunova et vivre ton premier cycle sans douleur.",
+    },
+    {
+      id: "duo",
+      quantity: 2,
+      price: 7500,        // 75€ (au lieu de 88€) — -15%
+      compareTotal: 8800,
+      discount: 15,
+      title: "Deux ceintures",
+      tagline: "Pour toi et ta meilleure amie. Offrez-vous la liberté ensemble.",
+      featured: true,     // "LE PLUS CHOISI"
+    },
+    {
+      id: "trio",
+      quantity: 3,
+      price: 10500,       // 105€ (au lieu de 132€) — -20%
+      compareTotal: 13200,
+      discount: 20,
+      title: "Trois ceintures",
+      tagline: "Pour toute la famille. La solution pour ne plus jamais souffrir seule.",
+    },
+  ] as const,
+  // ----- UPSELL -----
+  upsell: {
+    id: "patches",
+    sku: "LUNOVA-PATCH",
+    name: "Patchs chauffants Lunova",
+    description: "Discrets, 8 h de chaleur, jetables. Pour les journées en déplacement.",
+    price: 900,           // 9€
+    socialProof: "85 % des femmes qui commandent Lunova ajoutent les patchs.",
+    image: "/product/lunova-cable.png", // placeholder en attendant un visuel patches
+    alt: "Patchs chauffants Lunova",
+  },
   // ----- MÉDIAS HERO -----
   // Coloris ivoire en main : aligné brand book "féminin sans rose bonbon".
   hero: {
@@ -72,7 +114,10 @@ export const product = {
   ],
   guarantee: {
     days: 30,
-    label: "Essai 30 nuits — remboursée si elle ne te convient pas",
+    /** Reformulation premium — pas "30 jours" générique, mais "premier cycle". */
+    label: "Premier cycle ou remboursée",
+    detail:
+      "Utilise Lunova pendant ton prochain cycle. Si tu n’es pas soulagée, on te rembourse intégralement, sans question.",
     warrantyMonths: 24,
   },
   shipping: {

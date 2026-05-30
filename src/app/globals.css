@@ -370,6 +370,55 @@ p {
   animation: breathe 3.6s var(--ease-in-out) infinite;
 }
 
+/* Slider terracotta — utilisé dans le calculateur d'économies */
+.lunova-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  outline: none;
+  background: linear-gradient(
+    to right,
+    var(--color-terracotta) 0%,
+    var(--color-terracotta) var(--pct, 50%),
+    var(--color-stone-100) var(--pct, 50%),
+    var(--color-stone-100) 100%
+  );
+  cursor: pointer;
+}
+.lunova-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: var(--color-terracotta);
+  border: 3px solid var(--color-blanc);
+  box-shadow: var(--shadow-md);
+  cursor: grab;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+.lunova-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+.lunova-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+}
+.lunova-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: var(--color-terracotta);
+  border: 3px solid var(--color-blanc);
+  box-shadow: var(--shadow-md);
+  cursor: grab;
+}
+.lunova-slider:focus-visible {
+  box-shadow: var(--shadow-focus);
+}
+
 /* Effet shimmer pour skeleton / accents premium */
 .shimmer {
   background: linear-gradient(

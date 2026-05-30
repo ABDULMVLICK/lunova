@@ -9,6 +9,7 @@ import { Input, Field } from "@/components/ui/input";
 import { FadeIn } from "@/components/motion/fade-in";
 import { CheckoutProgress } from "@/components/checkout/checkout-progress";
 import { CheckoutSummary } from "@/components/checkout/checkout-summary";
+import { UpsellPatches } from "@/components/checkout/upsell-patches";
 import { useCartStore, useCartHydrated } from "@/lib/cart-store";
 import { useCheckoutStore } from "@/lib/checkout-store";
 
@@ -54,6 +55,10 @@ export default function LivraisonPage() {
 
         <FadeIn>
           <h1 className="mb-8 text-h2">Où on te livre ?</h1>
+        </FadeIn>
+
+        <FadeIn>
+          <UpsellPatches />
         </FadeIn>
 
         <div className="grid gap-10 lg:grid-cols-[1fr_360px] lg:gap-12">

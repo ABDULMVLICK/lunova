@@ -81,7 +81,7 @@ export function CartDrawer() {
                         </span>
                       </div>
                       <p className="mb-5 text-small text-foreground-muted">
-                        Livraison offerte · Essai 30 nuits
+                        Livraison offerte · Premier cycle ou remboursée
                       </p>
                       <Button size="lg" className="w-full" asChild>
                         <Link href="/checkout/livraison" onClick={close}>

@@ -43,7 +43,7 @@ export default function LivraisonPage() {
               />
               <Card
                 Icon={RotateCcw}
-                title="Essai 30 nuits"
+                title="Premier cycle ou remboursée"
                 lines={[
                   "Tu essaies 30 jours, sans engagement",
                   "Retour offert si elle ne va pas",

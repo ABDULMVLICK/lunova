@@ -59,8 +59,8 @@ export const faq: FaqCategory[] = [
         a: "2 à 4 jours ouvrés après ta commande, en Colissimo suivi. Tu reçois un numéro de suivi par email à l’expédition.",
       },
       {
-        q: "Comment se passe l’essai 30 nuits ?",
-        a: "Tu testes Lunova pendant 30 jours. Si elle ne te convient pas, tu nous écris à hello@lunova.fr et on te rembourse intégralement, retour offert.",
+        q: "Comment marche la garantie « premier cycle ou remboursée » ?",
+        a: "Tu utilises Lunova pendant tout ton prochain cycle. Si tu n’es pas soulagée, tu nous écris à hello@lunova.fr et on te rembourse intégralement, retour à notre charge — sans question.",
       },
       {
         q: "Et si ma ceinture tombe en panne ?",

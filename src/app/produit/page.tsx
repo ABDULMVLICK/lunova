@@ -22,9 +22,11 @@ import { Stagger, StaggerChild } from "@/components/motion/stagger";
 import { AnimatedStars } from "@/components/motion/animated-stars";
 import { Counter } from "@/components/motion/counter";
 import { AddToCartButton } from "@/components/product/add-to-cart-button";
+import { BundleSelector } from "@/components/product/bundle-selector";
 import { ColorSelector } from "@/components/product/color-selector";
 import { ProductGallery } from "@/components/product/product-gallery";
 import { ProductStateProvider } from "@/components/product/product-state";
+import { ShippingTimer } from "@/components/product/shipping-timer";
 import { StickyCta } from "@/components/product/sticky-cta";
 import { filterExistingImages } from "@/lib/media";
 import { product, formatPrice } from "@/lib/product";
@@ -33,7 +35,7 @@ import { faqFlat } from "@/lib/faq";
 export const metadata = {
   title: "Lunova — Ceinture chauffante 8 h pour douleurs menstruelles",
   description:
-    "Chaleur ciblée, 5 niveaux de température, 4 modes de massage. 157 g, discrète sous tes vêtements. Livraison offerte, essai 30 nuits.",
+    "Chaleur ciblée, 5 niveaux de température, 4 modes de massage. 157 g, discrète sous tes vêtements. Livraison offerte, premier cycle ou remboursée.",
 };
 
 export default async function ProduitPage() {
@@ -56,6 +58,7 @@ export default async function ProduitPage() {
       images={availableImages}
       colorToImageIdx={colorToImageIdx}
       defaultColorId={product.colors[0].id}
+      defaultBundleId="duo"
     >
       <Header />
 
@@ -130,16 +133,19 @@ export default async function ProduitPage() {
                 <ColorSelector />
               </StaggerChild>
 
+              {/* SÉLECTEUR DE BUNDLE */}
+              <StaggerChild className="pt-2">
+                <BundleSelector />
+              </StaggerChild>
+
               <StaggerChild className="flex flex-col gap-3 pt-2">
                 <AddToCartButton fullWidth />
-                <p className="text-center text-small text-foreground-muted">
-                  Expédiée sous 24 h · Livraison 2 à 4 jours
-                </p>
+                <ShippingTimer />
               </StaggerChild>
 
               <StaggerChild className="grid grid-cols-2 gap-4 rounded-xl border border-border bg-surface p-5 text-small">
                 <Bullet Icon={Truck} title="Livraison offerte" sub="France métropolitaine" />
-                <Bullet Icon={RotateCcw} title="Essai 30 nuits" sub="Remboursée si elle ne va pas" />
+                <Bullet Icon={RotateCcw} title="Premier cycle ou remboursée" sub="Pas soulagée ? On rembourse." />
                 <Bullet Icon={ShieldCheck} title="Garantie 2 ans" sub="Pièces & main d’œuvre" />
                 <Bullet Icon={Sparkles} title="Conçue avec attention" sub="Tissu doux côté peau" />
               </StaggerChild>
@@ -275,7 +281,7 @@ export default async function ProduitPage() {
                   <AddToCartButton />
                 </div>
                 <p className="mt-6 text-small text-blanc/60">
-                  Livraison offerte · Essai 30 nuits · Garantie 2 ans
+                  Livraison offerte · Premier cycle ou remboursée · Garantie 2 ans
                 </p>
               </div>
             </FadeIn>

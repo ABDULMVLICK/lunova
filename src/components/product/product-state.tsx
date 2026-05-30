@@ -11,6 +11,8 @@ type ProductState = {
   setImageIdx: (i: number) => void;
   colorId: string;
   setColorId: (id: string) => void;
+  bundleId: string;
+  setBundleId: (id: string) => void;
 };
 
 const Ctx = React.createContext<ProductState | null>(null);
@@ -23,16 +25,20 @@ export function ProductStateProvider({
   images,
   colorToImageIdx,
   defaultColorId,
+  defaultBundleId,
   children,
 }: {
   images: ProductImage[];
   /** Map colorId → index dans le tableau images */
   colorToImageIdx: Record<string, number>;
   defaultColorId: string;
+  /** Bundle sélectionné par défaut (ex: "solo", "duo", "trio") */
+  defaultBundleId: string;
   children: React.ReactNode;
 }) {
   const [imageIdx, setImageIdx] = React.useState(0);
   const [colorId, setColorIdState] = React.useState(defaultColorId);
+  const [bundleId, setBundleId] = React.useState(defaultBundleId);
 
   const setColorId = React.useCallback(
     (id: string) => {
@@ -44,8 +50,17 @@ export function ProductStateProvider({
   );
 
   const value = React.useMemo(
-    () => ({ images, colorToImageIdx, imageIdx, setImageIdx, colorId, setColorId }),
-    [images, colorToImageIdx, imageIdx, colorId, setColorId]
+    () => ({
+      images,
+      colorToImageIdx,
+      imageIdx,
+      setImageIdx,
+      colorId,
+      setColorId,
+      bundleId,
+      setBundleId,
+    }),
+    [images, colorToImageIdx, imageIdx, colorId, setColorId, bundleId]
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

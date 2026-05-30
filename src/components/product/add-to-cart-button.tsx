@@ -32,22 +32,29 @@ export function AddToCartButton({
   label,
 }: Props) {
   const addItem = useCartStore((s) => s.addItem);
-  const { colorId, images, imageIdx } = useProductState();
+  const { colorId, bundleId, images, imageIdx } = useProductState();
   const [justAdded, setJustAdded] = React.useState(false);
 
   const color = product.colors.find((c) => c.id === colorId) ?? product.colors[0];
+  const bundle = product.bundles.find((b) => b.id === bundleId) ?? product.bundles[0];
   const image = images[imageIdx] ?? images[0];
 
+  // Prix unitaire effectif (avec discount bundle réparti)
+  const unitPrice = Math.round(bundle.price / bundle.quantity);
+
   const onClick = () => {
-    addItem({
-      sku: product.sku,
-      name: `${product.name} — Ceinture chauffante`,
-      colorId: color.id,
-      colorLabel: color.label,
-      price: product.price,
-      image: image?.src ?? "/product/lunova-ivoire.jpg",
-      alt: image?.alt ?? color.label,
-    });
+    addItem(
+      {
+        sku: product.sku,
+        name: `${product.name} — Ceinture chauffante`,
+        colorId: color.id,
+        colorLabel: color.label,
+        price: unitPrice,
+        image: image?.src ?? "/product/lunova-ivoire.jpg",
+        alt: image?.alt ?? color.label,
+      },
+      bundle.quantity
+    );
     setJustAdded(true);
     window.setTimeout(() => setJustAdded(false), 1200);
   };
@@ -81,7 +88,7 @@ export function AddToCartButton({
             transition={{ duration: 0.2 }}
           >
             {label ?? "Ajouter au panier"}
-            {showPrice && <> — {formatPrice(product.price)}</>}
+            {showPrice && <> — {formatPrice(bundle.price)}</>}
           </motion.span>
         )}
       </AnimatePresence>

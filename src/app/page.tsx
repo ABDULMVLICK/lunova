@@ -33,6 +33,7 @@ import { Stagger, StaggerChild } from "@/components/motion/stagger";
 import { Counter } from "@/components/motion/counter";
 import { AnimatedStars } from "@/components/motion/animated-stars";
 import { ProductVisual } from "@/components/product/product-visual";
+import { SavingsCalculator } from "@/components/home/savings-calculator";
 import { product, formatPrice } from "@/lib/product";
 import { reviews } from "@/lib/reviews";
 import { faqFlat } from "@/lib/faq";
@@ -51,11 +52,7 @@ export default function Home() {
           <Container className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
             <Stagger className="flex flex-col gap-6" stagger={0.1}>
               <StaggerChild>
-                <Badge>
-                  Nouveau ·{" "}
-                  <Counter to={product.usersCount} className="mx-1 tabular-nums" />{" "}
-                  femmes l’utilisent
-                </Badge>
+                <Badge>Pour les femmes qui refusent de dépendre des antidouleurs</Badge>
               </StaggerChild>
               <StaggerChild as="h1" className="max-w-[14ch]">
                 Fini les crampes qui ruinent ta journée.
@@ -104,7 +101,7 @@ export default function Home() {
           <Container className="grid grid-cols-2 gap-6 py-8 md:grid-cols-4">
             {[
               { Icon: Truck, label: "Livraison offerte", sub: "2 à 4 jours" },
-              { Icon: RotateCcw, label: "Essai 30 nuits", sub: "Remboursée si elle ne convient pas" },
+              { Icon: RotateCcw, label: "Premier cycle ou remboursée", sub: "Pas soulagée ? On rembourse, sans question" },
               { Icon: ShieldCheck, label: "Garantie 2 ans", sub: "Pièces & main d’œuvre" },
               { Icon: Sparkles, label: "Conçue avec attention", sub: "Tissu doux côté peau" },
             ].map(({ Icon, label, sub }) => (
@@ -117,35 +114,63 @@ export default function Home() {
           </Container>
         </FadeIn>
 
-        {/* POUR QUI C'EST FAIT */}
+        {/* LE MIROIR — AVANT / APRÈS ÉMOTIONNEL */}
         <section className="section-py">
-          <Container className="grid gap-12 md:grid-cols-2 md:items-center">
-            <FadeIn>
-              <div className="aspect-[4/5] rounded-2xl bg-peche shadow-sm" />
+          <Container>
+            <FadeIn className="mb-12 max-w-2xl">
+              <Badge variant="outline" className="mb-4">Si tu te reconnais</Badge>
+              <h2>Tu te lèves le J1 et tu sais déjà comment ça va finir.</h2>
             </FadeIn>
-            <Stagger className="flex flex-col gap-6">
-              <StaggerChild><Badge variant="outline">Pour qui</Badge></StaggerChild>
-              <StaggerChild as="h2" className="max-w-[18ch]">
-                Conçue pour les femmes qui ne veulent plus subir.
-              </StaggerChild>
-              <StaggerChild as="p" className="text-foreground-muted text-lg">
-                Si tu reconnais l’un de ces moments, Lunova est faite pour toi.
-              </StaggerChild>
+
+            <Stagger className="grid gap-6 md:grid-cols-2" stagger={0.12}>
               <StaggerChild>
-                <ul className="flex flex-col gap-3">
-                  {[
-                    "Tu prends des anti-inflammatoires à chaque cycle",
-                    "Tu poses des congés ou tu télétravailles à cause de la douleur",
-                    "Tu sors avec une bouillotte cachée dans ton sac",
-                    "Tu sais que les premiers jours seront difficiles, chaque mois",
-                    "Tu veux quelque chose de discret au bureau",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <CheckCircle2 size={20} strokeWidth={1.75} className="mt-0.5 shrink-0 text-terracotta" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <article className="flex h-full flex-col gap-5 rounded-2xl bg-noir p-8 text-blanc md:p-10">
+                  <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blanc/50">
+                    <span className="h-px w-6 bg-blanc/30" /> Avant Lunova
+                  </div>
+                  <h3 className="font-display text-2xl text-blanc sm:text-3xl">
+                    Tu fais comme tu peux.
+                  </h3>
+                  <ul className="flex flex-col gap-3 text-blanc/75">
+                    {[
+                      "Tu prévois 2 boîtes d’ibuprofène pour le mois",
+                      "Tu poses un jour de RTT « pour être tranquille »",
+                      "Tu sors la bouillotte au boulot — et tu la caches",
+                      "Tu annules ce dîner. Encore.",
+                      "Tu te dis qu’à 30 ans, ça va passer.",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <X size={18} strokeWidth={1.75} className="mt-0.5 shrink-0 text-stone-400" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </StaggerChild>
+
+              <StaggerChild>
+                <article className="flex h-full flex-col gap-5 rounded-2xl bg-peche p-8 text-foreground md:p-10">
+                  <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-terracotta-deep">
+                    <span className="h-px w-6 bg-terracotta-deep/40" /> Avec Lunova
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-3xl">
+                    Tu vis ta journée. Sans y penser.
+                  </h3>
+                  <ul className="flex flex-col gap-3 text-foreground/80">
+                    {[
+                      "Tu actives Lunova sous ton pull en 3 secondes",
+                      "Tu vas au bureau. Tu travailles. Tu oublies.",
+                      "Tu sors dîner. Tu marches. Tu dors.",
+                      "Plus d’ibuprofène — plus d’estomac qui brûle.",
+                      "Tu reprends le contrôle, mois après mois.",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <CheckCircle2 size={18} strokeWidth={1.75} className="mt-0.5 shrink-0 text-terracotta-deep" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
               </StaggerChild>
             </Stagger>
           </Container>
@@ -281,6 +306,9 @@ export default function Home() {
           </Container>
         </section>
 
+        {/* CALCULATEUR D'ÉCONOMIES */}
+        <SavingsCalculator />
+
         {/* COMPARAISON */}
         <section className="section-py bg-surface-alt">
           <Container>
@@ -341,7 +369,7 @@ export default function Home() {
                   <article className="card-lift flex h-full flex-col gap-4 rounded-xl bg-surface p-8 shadow-sm">
                     <AnimatedStars rating={r.rating} />
                     <h3 className="text-h3 font-medium leading-tight">{r.title}</h3>
-                    <p className="text-foreground-muted">{r.body}</p>
+                    <p className="text-foreground-muted line-clamp-5">{r.story.after}</p>
                     <p className="mt-auto text-small text-foreground-subtle">
                       {r.name}{r.age ? `, ${r.age} ans` : ""}{r.duration ? ` — ${r.duration}` : ""}
                     </p>
@@ -468,7 +496,7 @@ export default function Home() {
                   </Button>
                 </div>
                 <p className="mt-8 text-small text-blanc/60">
-                  Livraison offerte · Essai 30 nuits · Garantie 2 ans
+                  Livraison offerte · Premier cycle ou remboursée · Garantie 2 ans
                 </p>
               </div>
             </FadeIn>

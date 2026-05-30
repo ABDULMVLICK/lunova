@@ -153,7 +153,7 @@ export default function PanierPage() {
                       </li>
                       <li className="flex items-center gap-2">
                         <RotateCcw size={14} strokeWidth={1.5} className="text-terracotta" />
-                        Essai 30 nuits, remboursement sans question
+                        Premier cycle ou remboursée, sans question
                       </li>
                       <li className="flex items-center gap-2">
                         <ShieldCheck size={14} strokeWidth={1.5} className="text-terracotta" />

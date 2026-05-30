@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
+import type { Review } from "@/lib/reviews";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Container } from "@/components/ui/container";
@@ -20,6 +21,31 @@ const dateFmt = new Intl.DateTimeFormat("fr-FR", {
   month: "long",
   year: "numeric",
 });
+
+function NarrativeStory({ story }: { story: Review["story"] }) {
+  return (
+    <div className="flex flex-col gap-3 text-foreground-muted">
+      <div>
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">
+          Avant ·
+        </span>{" "}
+        <span>{story.before}</span>
+      </div>
+      <div>
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">
+          Pourquoi Lunova ·
+        </span>{" "}
+        <span>{story.why}</span>
+      </div>
+      <div className="rounded-lg bg-terracotta-soft/40 p-3">
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-terracotta-deep">
+          Ce qui a changé ·
+        </span>{" "}
+        <span className="text-foreground">{story.after}</span>
+      </div>
+    </div>
+  );
+}
 
 export default function AvisPage() {
   const dist = ratingDistribution();
@@ -94,11 +120,12 @@ export default function AvisPage() {
                     )}
                   </div>
                   <h3 className="text-h3 font-medium leading-tight">{r.title}</h3>
-                  <p className="text-foreground-muted">{r.body}</p>
+                  <NarrativeStory story={r.story} />
                   <div className="mt-auto flex items-center justify-between text-small text-foreground-subtle">
                     <span>
                       {r.name}
                       {r.age ? `, ${r.age} ans` : ""}
+                      {r.city ? ` · ${r.city}` : ""}
                       {r.duration ? ` — ${r.duration}` : ""}
                     </span>
                     <time dateTime={r.date}>{dateFmt.format(new Date(r.date))}</time>
