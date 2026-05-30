@@ -28,6 +28,7 @@ export const product = {
       discount: 0,
       title: "Une ceinture",
       tagline: "Pour découvrir Lunova et vivre ton premier cycle sans douleur.",
+      featured: false,
     },
     {
       id: "duo",
@@ -47,8 +48,9 @@ export const product = {
       discount: 20,
       title: "Trois ceintures",
       tagline: "Pour toute la famille. La solution pour ne plus jamais souffrir seule.",
+      featured: false,
     },
-  ] as const,
+  ],
   // ----- UPSELL -----
   upsell: {
     id: "patches",
