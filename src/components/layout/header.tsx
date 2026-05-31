@@ -8,6 +8,7 @@ import { AnnouncementBar } from "@/components/layout/announcement-bar";
 
 const NAV = [
   { href: "/comment-ca-marche", label: "Comment ça marche" },
+  { href: "/notre-histoire", label: "Notre histoire" },
   { href: "/avis", label: "Avis" },
   { href: "/faq", label: "FAQ" },
 ];

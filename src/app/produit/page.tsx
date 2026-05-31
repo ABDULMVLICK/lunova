@@ -28,6 +28,7 @@ import { ProductGallery } from "@/components/product/product-gallery";
 import { ProductStateProvider } from "@/components/product/product-state";
 import { ShippingTimer } from "@/components/product/shipping-timer";
 import { StickyCta } from "@/components/product/sticky-cta";
+import { ProductJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { filterExistingImages } from "@/lib/media";
 import { product, formatPrice } from "@/lib/product";
 import { faqFlat } from "@/lib/faq";
@@ -60,6 +61,13 @@ export default async function ProduitPage() {
       defaultColorId={product.colors[0].id}
       defaultBundleId="solo"
     >
+      <ProductJsonLd />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", url: "/" },
+          { name: "Lunova — Ceinture chauffante", url: "/produit" },
+        ]}
+      />
       <Header />
 
       <main>

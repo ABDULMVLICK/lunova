@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { CartDrawer } from "@/components/cart/cart-drawer";
+import { CookieBanner } from "@/components/legal/cookie-banner";
+import { OrganizationJsonLd, WebsiteJsonLd } from "@/components/seo/json-ld";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -62,9 +64,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-background text-foreground antialiased">
+        <OrganizationJsonLd />
+        <WebsiteJsonLd />
         <ScrollProgress />
         {children}
         <CartDrawer />
+        <CookieBanner />
       </body>
     </html>
   );

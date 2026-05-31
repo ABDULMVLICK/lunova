@@ -6,10 +6,13 @@ import { Logo } from "@/components/brand/logo";
  * Footer minimaliste — 4 liens max, logo centré (brand book).
  */
 const LINKS = [
+  { href: "/notre-histoire", label: "Notre histoire" },
+  { href: "/livraison", label: "Livraison & retours" },
+  { href: "/contact", label: "Contact" },
+  { href: "/faq", label: "FAQ" },
   { href: "/mentions-legales", label: "Mentions légales" },
   { href: "/cgv", label: "CGV" },
-  { href: "/contact", label: "Contact" },
-  { href: "/livraison", label: "Livraison & retours" },
+  { href: "/confidentialite", label: "Confidentialité" },
 ];
 
 export function Footer() {

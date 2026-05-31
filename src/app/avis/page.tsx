@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Stars } from "@/components/ui/stars";
 import { reviews, ratingDistribution } from "@/lib/reviews";
 import { product, formatPrice } from "@/lib/product";
+import { ReviewsJsonLd } from "@/components/seo/json-ld";
 
 export const metadata = {
   title: "Avis vérifiés",
@@ -53,6 +54,7 @@ export default function AvisPage() {
 
   return (
     <>
+      <ReviewsJsonLd />
       <Header />
 
       <main>
