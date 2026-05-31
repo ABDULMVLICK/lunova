@@ -10,6 +10,7 @@ import { Input, Field } from "@/components/ui/input";
 import { FadeIn } from "@/components/motion/fade-in";
 import { CheckoutProgress } from "@/components/checkout/checkout-progress";
 import { CheckoutSummary } from "@/components/checkout/checkout-summary";
+import { PaymentTrust } from "@/components/checkout/payment-trust";
 import { StripePayment } from "@/components/checkout/stripe-payment";
 import { useCartStore, useCartTotal, useCartHydrated } from "@/lib/cart-store";
 import { useCheckoutStore, generateOrderId } from "@/lib/checkout-store";
@@ -111,7 +112,10 @@ export default function PaiementPage() {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <CheckoutSummary />
+            <div className="flex flex-col gap-4">
+              <CheckoutSummary />
+              <PaymentTrust />
+            </div>
           </FadeIn>
         </div>
       </Container>

@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 import { CookieBanner } from "@/components/legal/cookie-banner";
+import { NewsletterPopup } from "@/components/marketing/newsletter-popup";
 import { OrganizationJsonLd, WebsiteJsonLd } from "@/components/seo/json-ld";
 import "./globals.css";
 
@@ -70,6 +71,7 @@ export default function RootLayout({
         {children}
         <CartDrawer />
         <CookieBanner />
+        <NewsletterPopup />
       </body>
     </html>
   );
