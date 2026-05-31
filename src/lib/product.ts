@@ -63,31 +63,32 @@ export const product = {
     alt: "Patchs chauffants Lunova",
   },
   // ----- MÉDIAS HERO -----
-  // Image "produit porté sur le bas-ventre" — preuve placement + discrétion.
+  // Packshot ivoire net, sur fond clair — aligné brand book "féminin
+  // sans rose bonbon" + crispness pour le hero.
   hero: {
     image: {
-      src: "/product/lunova-porte-rose.jpg",
-      alt: "Lunova portée sur le bas-ventre, mains autour de la ceinture",
+      src: "/product/lunova-ivoire.jpg",
+      alt: "Ceinture chauffante Lunova ivoire, vue de face sur fond clair",
     },
   } as {
     video?: { src: string; poster?: string; alt?: string };
     image?: { src: string; alt: string };
   },
-  // Galerie PDP — ordre validé par l'audit
+  // Galerie PDP — ordre repensé après retrait de l'image floue
   images: [
-    // 1. Produit porté sur le bas-ventre — preuve placement + discrétion
-    { src: "/product/lunova-porte-rose.jpg", alt: "Lunova portée sur le bas-ventre, mains autour de la ceinture" },
-    // 2. Packshot rose nude
+    // 1. Packshot rose nude — affiché quand on clique "Rose nude"
     { src: "/product/lunova-rose.jpg", alt: "Ceinture Lunova rose nude, vue de face sur fond clair" },
-    // 3. Packshot ivoire
+    // 2. Packshot ivoire — affiché quand on clique "Ivoire"
     { src: "/product/lunova-ivoire.jpg", alt: "Ceinture Lunova ivoire, vue de face sur fond clair" },
-    // 4. Lifestyle ambiance maison
+    // 3. Femme présente les deux coloris — preuve humaine du choix
+    { src: "/product/lunova-duo-femme.jpg", alt: "Femme souriante tenant les deux coloris Lunova côte à côte" },
+    // 4. Lifestyle ambiance maison — produit en situation détente
     { src: "/product/lunova-lifestyle-rose.jpg", alt: "Femme allongée dans son lit, Lunova posée sur le ventre" },
-    // 5. Les deux coloris
+    // 5. Les deux coloris en duo
     { src: "/product/lunova-coloris.jpg", alt: "Les deux coloris Lunova : ivoire et rose nude" },
-    // 6. Avec le câble
+    // 6. Avec le câble — contenu de la boîte
     { src: "/product/lunova-cable.png", alt: "Ceinture Lunova ivoire avec son câble de recharge USB" },
-    // 7. Unboxing
+    // 7. Unboxing — emballage premium
     { src: "/product/lunova-unboxing.jpg", alt: "Ceinture Lunova dans son écrin, à l’ouverture" },
   ],
   specs: {
