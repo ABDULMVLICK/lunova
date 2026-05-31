@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Clock3,
   Heart,
@@ -124,52 +125,76 @@ export default function Home() {
 
             <Stagger className="grid gap-6 md:grid-cols-2" stagger={0.12}>
               <StaggerChild>
-                <article className="flex h-full flex-col gap-5 rounded-2xl bg-noir p-8 text-blanc md:p-10">
-                  <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blanc/50">
-                    <span className="h-px w-6 bg-blanc/30" /> Avant Lunova
+                <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-noir text-blanc">
+                  <div className="relative aspect-[5/3] w-full overflow-hidden">
+                    <Image
+                      src="/lifestyle/avant-bouillotte.jpg"
+                      alt="Femme assise sur un canapé, bouillotte rose pressée contre le ventre"
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-noir via-noir/30 to-transparent" />
                   </div>
-                  <h3 className="font-display text-2xl text-blanc sm:text-3xl">
-                    Tu fais comme tu peux.
-                  </h3>
-                  <ul className="flex flex-col gap-3 text-blanc/75">
-                    {[
-                      "Tu prévois 2 boîtes d’ibuprofène pour le mois",
-                      "Tu poses un jour de RTT « pour être tranquille »",
-                      "Tu sors la bouillotte au boulot — et tu la caches",
-                      "Tu annules ce dîner. Encore.",
-                      "Tu te dis qu’à 30 ans, ça va passer.",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <X size={18} strokeWidth={1.75} className="mt-0.5 shrink-0 text-stone-400" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex flex-1 flex-col gap-5 p-8 md:p-10">
+                    <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-blanc/50">
+                      <span className="h-px w-6 bg-blanc/30" /> Avant Lunova
+                    </div>
+                    <h3 className="font-display text-2xl text-blanc sm:text-3xl">
+                      Tu fais comme tu peux.
+                    </h3>
+                    <ul className="flex flex-col gap-3 text-blanc/75">
+                      {[
+                        "Tu prévois 2 boîtes d’ibuprofène pour le mois",
+                        "Tu poses un jour de RTT « pour être tranquille »",
+                        "Tu sors la bouillotte au boulot — et tu la caches",
+                        "Tu annules ce dîner. Encore.",
+                        "Tu te dis qu’à 30 ans, ça va passer.",
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <X size={18} strokeWidth={1.75} className="mt-0.5 shrink-0 text-stone-400" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </article>
               </StaggerChild>
 
               <StaggerChild>
-                <article className="flex h-full flex-col gap-5 rounded-2xl bg-peche p-8 text-foreground md:p-10">
-                  <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-terracotta-deep">
-                    <span className="h-px w-6 bg-terracotta-deep/40" /> Avec Lunova
+                <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-peche text-foreground">
+                  <div className="relative aspect-[5/3] w-full overflow-hidden">
+                    <Image
+                      src="/lifestyle/apaisement-livre.jpg"
+                      alt="Femme allongée sereinement sur tissu beige avec un livre, sourire détendu"
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-peche via-peche/20 to-transparent" />
                   </div>
-                  <h3 className="font-display text-2xl sm:text-3xl">
-                    Tu vis ta journée. Sans y penser.
-                  </h3>
-                  <ul className="flex flex-col gap-3 text-foreground/80">
-                    {[
-                      "Tu actives Lunova sous ton pull en 3 secondes",
-                      "Tu vas au bureau. Tu travailles. Tu oublies.",
-                      "Tu sors dîner. Tu marches. Tu dors.",
-                      "Plus d’ibuprofène — plus d’estomac qui brûle.",
-                      "Tu reprends le contrôle, mois après mois.",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <CheckCircle2 size={18} strokeWidth={1.75} className="mt-0.5 shrink-0 text-terracotta-deep" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex flex-1 flex-col gap-5 p-8 md:p-10">
+                    <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-terracotta-deep">
+                      <span className="h-px w-6 bg-terracotta-deep/40" /> Avec Lunova
+                    </div>
+                    <h3 className="font-display text-2xl sm:text-3xl">
+                      Tu vis ta journée. Sans y penser.
+                    </h3>
+                    <ul className="flex flex-col gap-3 text-foreground/80">
+                      {[
+                        "Tu actives Lunova sous ton pull en 3 secondes",
+                        "Tu vas au bureau. Tu travailles. Tu oublies.",
+                        "Tu sors dîner. Tu marches. Tu dors.",
+                        "Plus d’ibuprofène — plus d’estomac qui brûle.",
+                        "Tu reprends le contrôle, mois après mois.",
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <CheckCircle2 size={18} strokeWidth={1.75} className="mt-0.5 shrink-0 text-terracotta-deep" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </article>
               </StaggerChild>
             </Stagger>

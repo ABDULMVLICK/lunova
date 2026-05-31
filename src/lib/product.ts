@@ -63,22 +63,31 @@ export const product = {
     alt: "Patchs chauffants Lunova",
   },
   // ----- MÉDIAS HERO -----
-  // Coloris ivoire en main : aligné brand book "féminin sans rose bonbon".
+  // Image "produit porté sur le bas-ventre" — preuve placement + discrétion.
   hero: {
     image: {
-      src: "/product/lunova-ivoire.jpg",
-      alt: "Ceinture chauffante Lunova ivoire, posée sur fond clair",
+      src: "/product/lunova-porte-rose.jpg",
+      alt: "Lunova portée sur le bas-ventre, mains autour de la ceinture",
     },
   } as {
     video?: { src: string; poster?: string; alt?: string };
     image?: { src: string; alt: string };
   },
-  // Galerie PDP — ivoire en main, rose comme variante
+  // Galerie PDP — ordre validé par l'audit
   images: [
-    { src: "/product/lunova-ivoire.jpg", alt: "Ceinture Lunova ivoire, vue de face sur fond clair" },
+    // 1. Produit porté sur le bas-ventre — preuve placement + discrétion
+    { src: "/product/lunova-porte-rose.jpg", alt: "Lunova portée sur le bas-ventre, mains autour de la ceinture" },
+    // 2. Packshot rose nude
     { src: "/product/lunova-rose.jpg", alt: "Ceinture Lunova rose nude, vue de face sur fond clair" },
+    // 3. Packshot ivoire
+    { src: "/product/lunova-ivoire.jpg", alt: "Ceinture Lunova ivoire, vue de face sur fond clair" },
+    // 4. Lifestyle ambiance maison
+    { src: "/product/lunova-lifestyle-rose.jpg", alt: "Femme allongée dans son lit, Lunova posée sur le ventre" },
+    // 5. Les deux coloris
     { src: "/product/lunova-coloris.jpg", alt: "Les deux coloris Lunova : ivoire et rose nude" },
+    // 6. Avec le câble
     { src: "/product/lunova-cable.png", alt: "Ceinture Lunova ivoire avec son câble de recharge USB" },
+    // 7. Unboxing
     { src: "/product/lunova-unboxing.jpg", alt: "Ceinture Lunova dans son écrin, à l’ouverture" },
   ],
   specs: {

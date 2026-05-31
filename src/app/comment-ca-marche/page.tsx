@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Thermometer,
   Heart,
@@ -41,6 +42,19 @@ export default function CommentCaMarchePage() {
               science sait depuis longtemps sur la chaleur ciblée et la
               dysménorrhée.
             </p>
+          </Container>
+
+          <Container className="mt-12 max-w-4xl">
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-border">
+              <Image
+                src="/lifestyle/douleur-ventre.jpg"
+                alt="Vue du haut sur les mains posées sur le bas-ventre — geste universel de la douleur menstruelle"
+                fill
+                sizes="(min-width: 1024px) 900px, 100vw"
+                className="object-cover object-center"
+                priority
+              />
+            </div>
           </Container>
         </section>
 
