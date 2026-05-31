@@ -102,7 +102,7 @@ export default function CommentCaMarchePage() {
                   Icon: Battery,
                   title: "1. Tu charges",
                   body:
-                    "Branche le câble USB-C fourni. 2 heures pour une charge complète. Une lumière passe au terracotta quand c’est prêt.",
+                    "Branche le câble USB fourni. Environ 2 h pour une charge complète. Une lumière passe au terracotta quand c’est prêt.",
                 },
                 {
                   Icon: Settings2,
@@ -120,7 +120,7 @@ export default function CommentCaMarchePage() {
                   Icon: Clock3,
                   title: "4. Tu oublies",
                   body:
-                    "La chaleur arrive en moins de 30 secondes. Tu peux la porter plusieurs heures. Une coupure automatique se déclenche en cas d’usage prolongé — tu relances quand tu veux.",
+                    "La chaleur arrive en moins de 30 secondes. Une coupure automatique se déclenche après 15 ou 30 minutes selon le programme — tu relances en un clic, autant de fois que tu veux.",
                 },
               ].map(({ Icon, title, body }) => (
                 <li key={title} className="rounded-xl border border-border bg-surface p-8">

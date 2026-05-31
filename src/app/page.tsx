@@ -194,7 +194,7 @@ export default function Home() {
                 {
                   Icon: Heart,
                   title: "2. Tu vis",
-                  body: "La chaleur reste constante plusieurs heures. Tu travailles, tu marches, tu dors. Tu oublies.",
+                  body: "Cycles de 15 ou 30 minutes relançables. Tu travailles, tu marches, tu dors. Tu oublies.",
                 },
                 {
                   Icon: Battery,
@@ -339,7 +339,7 @@ export default function Home() {
                   <tbody className="text-small">
                     {[
                       ["Discrète, mobile", true, false, true],
-                      ["Chaleur constante plusieurs heures", true, false, false],
+                      ["Cycles de chaleur relançables à volonté", true, false, false],
                       ["Sans effets secondaires", true, true, false],
                       ["Mains libres", true, false, true],
                       ["Réutilisable à vie", true, true, false],

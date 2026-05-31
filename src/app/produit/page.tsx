@@ -58,7 +58,7 @@ export default async function ProduitPage() {
       images={availableImages}
       colorToImageIdx={colorToImageIdx}
       defaultColorId={product.colors[0].id}
-      defaultBundleId="duo"
+      defaultBundleId="solo"
     >
       <Header />
 
@@ -75,7 +75,7 @@ export default async function ProduitPage() {
             <Stagger className="flex flex-col gap-6" stagger={0.08}>
               <StaggerChild>
                 <Badge>
-                  Stock — <Counter to={product.stock} className="tabular-nums" /> pièces disponibles
+                  En stock — {product.stock} pièces disponibles
                 </Badge>
               </StaggerChild>
 
@@ -86,18 +86,18 @@ export default async function ProduitPage() {
               <StaggerChild className="flex items-center gap-3">
                 <AnimatedStars rating={5} size={18} />
                 <span className="text-small text-foreground-muted">
-                  {product.rating} / 5 ·{" "}
+                  {product.rating.toString().replace(".", ",")} / 5 ·{" "}
                   <Link href="/avis" className="text-link underline underline-offset-2">
-                    <Counter to={product.reviewsCount} className="tabular-nums" /> avis vérifiés
+                    {product.reviewsCount.toLocaleString("fr-FR")} avis vérifiés
                   </Link>
                 </span>
               </StaggerChild>
 
               <StaggerChild as="p" className="text-foreground-muted text-lg">
-                Chaleur ciblée et constante plusieurs heures, 4 modes de
-                massage, discrète sous tes vêtements. Conçue pour
-                t’accompagner toute la journée du premier au dernier jour de
-                tes règles.
+                Chaleur ciblée et constante par cycles de 15 ou 30 minutes
+                relançables, 4 modes de massage, discrète sous tes vêtements.
+                Conçue pour t’accompagner toute la journée du premier au
+                dernier jour de tes règles.
               </StaggerChild>
 
               <StaggerChild className="flex items-baseline gap-3">
@@ -108,7 +108,7 @@ export default async function ProduitPage() {
                   {formatPrice(product.comparePrice)}
                 </span>
                 <Badge variant="default" className="ml-2">
-                  -<Counter to={Math.round((1 - product.price / product.comparePrice) * 100)} />%
+                  −{Math.round((1 - product.price / product.comparePrice) * 100)} %
                 </Badge>
               </StaggerChild>
 

@@ -8,11 +8,11 @@ export const faq: FaqCategory[] = [
     items: [
       {
         q: "Comment j’utilise Lunova la première fois ?",
-        a: "Tu charges la ceinture pendant 2 heures avec le câble USB-C fourni. Tu l’enroules autour de ta taille, tu ajustes la sangle, tu allumes le bouton central. La chaleur arrive en 30 secondes.",
+        a: "Tu charges la ceinture pendant environ 2 heures avec le câble USB fourni. Tu l’enroules autour de ta taille, tu ajustes la sangle, tu allumes le bouton central. La chaleur arrive en moins de 30 secondes.",
       },
       {
         q: "Combien de temps puis-je la porter ?",
-        a: "Une charge complète tient plusieurs heures. Au niveau le plus doux, tu peux la porter toute une journée de travail. Tu la recharges simplement par USB le soir.",
+        a: "Chaque cycle dure 15 ou 30 minutes avant la coupure de sécurité. Tu peux le relancer autant de fois que tu veux. Au niveau doux, une charge complète te tient sur plusieurs cycles consécutifs — largement de quoi traverser ta journée de travail.",
       },
       {
         q: "Est-ce que je peux la porter la nuit ?",
@@ -30,7 +30,7 @@ export const faq: FaqCategory[] = [
     items: [
       {
         q: "Est-ce sans danger ?",
-        a: "Oui. Lunova fonctionne en basse tension (moins de 50 V) et sa température reste sous le seuil de risque cutané. Une coupure automatique évite toute surchauffe en cas d’usage prolongé.",
+        a: "Oui. Lunova fonctionne en très basse tension (3,7 V — équivalent d’un téléphone) et sa température maximale reste sous le seuil de risque cutané. La coupure automatique après 15 ou 30 minutes évite toute surchauffe.",
       },
       {
         q: "Je suis enceinte, puis-je l’utiliser ?",
