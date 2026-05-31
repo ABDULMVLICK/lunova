@@ -74,21 +74,19 @@ export const product = {
     video?: { src: string; poster?: string; alt?: string };
     image?: { src: string; alt: string };
   },
-  // Galerie PDP — ordre repensé après retrait de l'image floue
+  // Galerie PDP — uniquement les visuels nets
   images: [
     // 1. Packshot rose nude — affiché quand on clique "Rose nude"
     { src: "/product/lunova-rose.jpg", alt: "Ceinture Lunova rose nude, vue de face sur fond clair" },
     // 2. Packshot ivoire — affiché quand on clique "Ivoire"
     { src: "/product/lunova-ivoire.jpg", alt: "Ceinture Lunova ivoire, vue de face sur fond clair" },
-    // 3. Femme présente les deux coloris — preuve humaine du choix
-    { src: "/product/lunova-duo-femme.jpg", alt: "Femme souriante tenant les deux coloris Lunova côte à côte" },
-    // 4. Lifestyle ambiance maison — produit en situation détente
+    // 3. Lifestyle ambiance maison — produit en situation détente
     { src: "/product/lunova-lifestyle-rose.jpg", alt: "Femme allongée dans son lit, Lunova posée sur le ventre" },
-    // 5. Les deux coloris en duo
+    // 4. Les deux coloris en duo
     { src: "/product/lunova-coloris.jpg", alt: "Les deux coloris Lunova : ivoire et rose nude" },
-    // 6. Avec le câble — contenu de la boîte
+    // 5. Avec le câble — contenu de la boîte
     { src: "/product/lunova-cable.png", alt: "Ceinture Lunova ivoire avec son câble de recharge USB" },
-    // 7. Unboxing — emballage premium
+    // 6. Unboxing — emballage premium
     { src: "/product/lunova-unboxing.jpg", alt: "Ceinture Lunova dans son écrin, à l’ouverture" },
   ],
   specs: {
