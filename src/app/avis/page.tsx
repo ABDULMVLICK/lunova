@@ -138,6 +138,13 @@ export default function AvisPage() {
               Affichage des {reviews.length} derniers avis publics — sur un total
               de {product.reviewsCount.toLocaleString("fr-FR")}.
             </p>
+
+            <div className="mx-auto mt-6 max-w-2xl rounded-lg bg-stone-50 p-4 text-center text-small text-foreground-muted">
+              Avis collectés auprès des premières utilisatrices du{" "}
+              <strong className="text-foreground">programme bêta Lunova</strong>.
+              Tous les retours sont <strong className="text-foreground">libres et non rémunérés</strong>.
+              Modération assurée par un tiers indépendant.
+            </div>
           </Container>
         </section>
 
