@@ -182,8 +182,8 @@ export default function CommentCaMarchePage() {
         {/* CTA */}
         <section className="section-py">
           <Container>
-            <div className="rounded-2xl bg-noir px-8 py-16 text-center text-blanc md:px-16">
-              <h2 className="text-blanc mx-auto max-w-[20ch]">
+            <div className="rounded-2xl bg-terracotta-soft px-8 py-16 text-center md:px-16">
+              <h2 className="mx-auto max-w-[20ch]">
                 Tu as compris l&apos;essentiel. À toi de l&apos;essayer.
               </h2>
               <div className="mt-10">

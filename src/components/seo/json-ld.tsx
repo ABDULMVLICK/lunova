@@ -63,7 +63,7 @@ export function ProductJsonLd() {
     image: [
       `${SITE_URL}/product/lunova-rose.jpg`,
       `${SITE_URL}/product/lunova-ivoire.jpg`,
-      `${SITE_URL}/product/lunova-lifestyle-rose.jpg`,
+      `${SITE_URL}/product/lunova-coloris.jpg`,
     ],
     brand: { "@type": "Brand", name: "Lunova" },
     sku: product.sku,

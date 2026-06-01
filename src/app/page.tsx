@@ -13,10 +13,6 @@ import {
   Feather,
   CheckCircle2,
   X,
-  Briefcase,
-  Moon,
-  Footprints,
-  Home as HomeIcon,
 } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -55,34 +51,57 @@ export default function Home() {
               <StaggerChild>
                 <Badge>Pour les femmes qui refusent de dépendre des antidouleurs</Badge>
               </StaggerChild>
-              <StaggerChild as="h1" className="max-w-[14ch]">
-                Fini les crampes qui ruinent ta journée.
+              <StaggerChild as="h1" className="max-w-[16ch]">
+                Tes règles ne devraient pas dicter ta journée.
               </StaggerChild>
               <StaggerChild as="p" className="max-w-prose text-foreground-muted text-lg">
-                Tu connais ce moment où la douleur arrive au pire moment. Au
-                bureau, en réunion, dans le métro. Lunova diffuse une chaleur
-                douce pendant des heures, discrètement sous tes vêtements.
+                Une chaleur douce et discrète, pendant des heures. Tu l’actives
+                sous ton pull, et tu continues ta vie — sans rien demander à
+                personne.
+              </StaggerChild>
+              <StaggerChild as="p" className="font-display text-small italic text-terracotta-deep/80">
+                Vis ta journée. Sans te justifier.
               </StaggerChild>
               <StaggerChild className="flex flex-wrap items-center gap-4 pt-2">
                 <Button size="lg" className="breathe" asChild>
                   <Link href="/produit">
-                    Je veux me soulager — {formatPrice(product.price)}
+                    Découvrir Lunova — {formatPrice(product.price)}
                   </Link>
                 </Button>
                 <Button variant="link" asChild>
                   <Link href="/comment-ca-marche">Comment ça marche</Link>
                 </Button>
               </StaggerChild>
-              <StaggerChild className="flex items-center gap-3 pt-4">
-                <AnimatedStars rating={5} delay={0.3} />
-                <span className="text-small text-foreground-muted">
-                  {product.rating} / 5 ·{" "}
-                  <Counter
-                    to={product.reviewsCount}
-                    className="tabular-nums"
-                  />{" "}
-                  avis vérifiés
-                </span>
+              <StaggerChild className="pt-4">
+                <Link
+                  href="/avis"
+                  className="group inline-flex items-center gap-3 rounded-full -mx-2 px-2 py-1 transition-colors hover:bg-terracotta-soft/40"
+                >
+                  <AnimatedStars rating={5} delay={0.3} />
+                  <span className="text-small text-foreground-muted transition-colors group-hover:text-foreground">
+                    {product.rating} / 5 ·{" "}
+                    <Counter
+                      to={product.reviewsCount}
+                      className="tabular-nums"
+                    />{" "}
+                    retours bêta
+                    <span className="ml-1 inline-block text-link opacity-0 transition-opacity group-hover:opacity-100">
+                      →
+                    </span>
+                  </span>
+                </Link>
+              </StaggerChild>
+
+              <StaggerChild>
+                <blockquote className="border-l-2 border-terracotta/50 pl-4 text-small italic text-foreground-muted">
+                  <p className="leading-snug">
+                    « Pour la première fois en dix ans, j’ai pu finir ma
+                    journée de boulot sans avaler un cachet. »
+                  </p>
+                  <footer className="mt-1 not-italic text-foreground-subtle">
+                    — Camille, 29 ans · 4 mois d’utilisation
+                  </footer>
+                </blockquote>
               </StaggerChild>
             </Stagger>
 
@@ -91,6 +110,7 @@ export default function Home() {
               <ProductVisual
                 video={product.hero.video}
                 image={product.hero.image}
+                aspect="landscape"
                 priority
               />
             </FadeIn>
@@ -114,6 +134,46 @@ export default function Home() {
             ))}
           </Container>
         </FadeIn>
+
+        {/* ON NE TE CROIT PAS — cœur émotionnel, fil rouge brief */}
+        <section className="section-py bg-surface">
+          <Container className="max-w-3xl">
+            <FadeIn>
+              <Badge variant="outline" className="mb-6">Le vrai problème</Badge>
+              <h2 className="mb-10 max-w-[20ch]">
+                Le pire, ce n’est pas la douleur. C’est qu’on te croit pas.
+              </h2>
+            </FadeIn>
+
+            <Stagger
+              className="flex flex-col gap-6 text-lg leading-relaxed text-foreground-muted"
+              stagger={0.12}
+            >
+              <StaggerChild as="p">
+                La manager qui soupire quand tu poses un jour. Le « t’as qu’à
+                prendre un doliprane ». L’impression de devoir prouver que tu as
+                vraiment mal, alors que tu serres les dents en réunion depuis ce
+                matin.
+              </StaggerChild>
+              <StaggerChild as="p">
+                Tu n’exagères pas. Une femme sur deux a des règles douloureuses,
+                et la plupart ont déjà senti qu’on minimisait ce qu’elles
+                vivent.
+              </StaggerChild>
+              <StaggerChild as="p" className="text-foreground">
+                Lunova ne te demande pas de te justifier. Tu l’actives sous tes
+                vêtements, la chaleur fait son travail, et toi tu vis ta
+                journée. Normalement.
+              </StaggerChild>
+            </Stagger>
+
+            <FadeIn delay={0.4} className="mt-10 border-t border-border pt-6">
+              <p className="font-display text-base italic text-terracotta-deep/80">
+                Vis ta journée. Sans te justifier.
+              </p>
+            </FadeIn>
+          </Container>
+        </section>
 
         {/* LE MIROIR — AVANT / APRÈS ÉMOTIONNEL */}
         <section className="section-py">
@@ -149,7 +209,7 @@ export default function Home() {
                         "Tu poses un jour de RTT « pour être tranquille »",
                         "Tu sors la bouillotte au boulot — et tu la caches",
                         "Tu annules ce dîner. Encore.",
-                        "Tu te dis qu’à 30 ans, ça va passer.",
+                        "Tu t’excuses d’avoir mal.",
                       ].map((item) => (
                         <li key={item} className="flex items-start gap-3">
                           <X size={18} strokeWidth={1.75} className="mt-0.5 shrink-0 text-stone-400" />
@@ -165,11 +225,11 @@ export default function Home() {
                 <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-peche text-foreground">
                   <div className="relative aspect-[5/3] w-full overflow-hidden">
                     <Image
-                      src="/lifestyle/apaisement-livre.jpg"
-                      alt="Femme allongée sereinement sur tissu beige avec un livre, sourire détendu"
+                      src="/product/lunova-pull-avec.jpg"
+                      alt="Femme en pull beige ajusté — Lunova portée dessous reste invisible"
                       fill
                       sizes="(min-width: 768px) 50vw, 100vw"
-                      className="object-cover"
+                      className="object-cover object-[center_30%]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-peche via-peche/20 to-transparent" />
                   </div>
@@ -198,6 +258,88 @@ export default function Home() {
                 </article>
               </StaggerChild>
             </Stagger>
+          </Container>
+        </section>
+
+        {/* DISCRÉTION — argument n°1, glissement "caché par gêne → privé par liberté" */}
+        <section className="section-py">
+          <Container className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
+            <FadeIn className="order-2 md:order-1">
+              <Badge variant="outline" className="mb-4">Discrétion</Badge>
+              <h2 className="mb-6 max-w-[22ch]">
+                Mince, ajustée, invisible. Ton soulagement ne regarde que toi.
+              </h2>
+              <p className="text-lg leading-relaxed text-foreground-muted">
+                Au bureau, en réunion, en soirée. Elle se glisse sous un pull et
+                personne ne devine rien. Pas parce qu’il faut le cacher — mais
+                parce que c’est ton corps, ton confort, ton choix.
+              </p>
+              <ul className="mt-8 flex flex-col gap-3 text-small text-foreground-muted">
+                {[
+                  { Icon: Feather, label: "Profil fin — invisible sous un pull" },
+                  { Icon: Heart, label: "157,5 g — tu oublies que tu la portes" },
+                  { Icon: ShieldCheck, label: "Sangle ajustable, toutes morphologies" },
+                ].map(({ Icon, label }) => (
+                  <li key={label} className="flex items-center gap-3">
+                    <Icon size={18} strokeWidth={1.5} className="shrink-0 text-terracotta" />
+                    <span>{label}</span>
+                  </li>
+                ))}
+              </ul>
+            </FadeIn>
+
+            <FadeIn delay={0.15} y={24} className="order-1 md:order-2">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-border/60">
+                <Image
+                  src="/product/lunova-pull-discretion.jpg"
+                  alt="Démonstration de la discrétion Lunova : à gauche la ceinture visible sous le pull soulevé, à droite la même femme en pull baissé — rien ne se voit"
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </FadeIn>
+          </Container>
+        </section>
+
+        {/* CONFORT & AUTONOMIE — brief section ③ */}
+        <section className="section-py bg-surface">
+          <Container className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
+            <FadeIn y={24}>
+              <div className="relative aspect-[7/6] w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-border/60">
+                <Image
+                  src="/product/lunova-confort-autonomie.jpg"
+                  alt="Lunova en situation : portée sous le pull, vue de dos, avec mentions de grande autonomie et adaptation à toutes les morphologies"
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.15}>
+              <Badge variant="outline" className="mb-4">Confort &amp; autonomie</Badge>
+              <h2 className="mb-6 max-w-[20ch]">
+                Pensée pour durer. Pensée pour toi.
+              </h2>
+              <p className="text-lg leading-relaxed text-foreground-muted">
+                Une charge couvre ta journée — bureau, transports, soirée. La
+                sangle s’ajuste de 60 à 170 cm et épouse toutes les
+                morphologies, sans pression ni compromis.
+              </p>
+              <ul className="mt-8 flex flex-col gap-3 text-small text-foreground-muted">
+                {[
+                  { Icon: Battery, label: "Grande autonomie — une charge pour ta journée" },
+                  { Icon: ShieldCheck, label: "Sangle 60–170 cm, toutes morphologies" },
+                  { Icon: Feather, label: "157,5 g — sans pression, tu l’oublies" },
+                ].map(({ Icon, label }) => (
+                  <li key={label} className="flex items-center gap-3">
+                    <Icon size={18} strokeWidth={1.5} className="shrink-0 text-terracotta" />
+                    <span>{label}</span>
+                  </li>
+                ))}
+              </ul>
+            </FadeIn>
           </Container>
         </section>
 
@@ -288,6 +430,76 @@ export default function Home() {
           </Container>
         </section>
 
+        {/* CHOIX DES COLORIS — premium, libellés poétiques (brief #4) */}
+        <section className="section-py bg-surface">
+          <Container className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
+            <FadeIn y={24}>
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-surface-alt shadow-lg ring-1 ring-border/60">
+                <Image
+                  src="/product/lunova-coloris.jpg"
+                  alt="Les deux coloris Lunova : ivoire et rose nude, présentés sur soie"
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </FadeIn>
+
+            <Stagger className="flex flex-col gap-6" stagger={0.12}>
+              <StaggerChild>
+                <Badge variant="outline" className="mb-2">Les coloris</Badge>
+                <h2 className="max-w-[18ch]">
+                  Ivoire ou rose nude. À toi de choisir.
+                </h2>
+              </StaggerChild>
+
+              <StaggerChild>
+                <Link
+                  href="/produit?color=ivoire"
+                  className="card-lift group flex items-center gap-5 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-terracotta/50"
+                >
+                  <span
+                    className="h-14 w-14 shrink-0 rounded-full ring-1 ring-border"
+                    style={{ background: product.colors[0].hex }}
+                    aria-hidden
+                  />
+                  <span className="flex flex-col">
+                    <span className="font-display text-xl text-foreground">Ivoire</span>
+                    <span className="text-small italic text-foreground-muted">
+                      Élégance &amp; pureté
+                    </span>
+                  </span>
+                  <span className="ml-auto text-small text-link opacity-0 transition-opacity group-hover:opacity-100">
+                    Choisir →
+                  </span>
+                </Link>
+              </StaggerChild>
+
+              <StaggerChild>
+                <Link
+                  href="/produit?color=rose"
+                  className="card-lift group flex items-center gap-5 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-terracotta/50"
+                >
+                  <span
+                    className="h-14 w-14 shrink-0 rounded-full ring-1 ring-border"
+                    style={{ background: product.colors[1].hex }}
+                    aria-hidden
+                  />
+                  <span className="flex flex-col">
+                    <span className="font-display text-xl text-foreground">Rose nude</span>
+                    <span className="text-small italic text-foreground-muted">
+                      Douceur &amp; harmonie
+                    </span>
+                  </span>
+                  <span className="ml-auto text-small text-link opacity-0 transition-opacity group-hover:opacity-100">
+                    Choisir →
+                  </span>
+                </Link>
+              </StaggerChild>
+            </Stagger>
+          </Container>
+        </section>
+
         {/* IDÉAL POUR — 4 usages */}
         <section className="section-py">
           <Container>
@@ -307,31 +519,45 @@ export default function Home() {
             <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger={0.08}>
               {[
                 {
-                  Icon: Briefcase,
+                  image: "/product/lunova-situation-bureau.jpg",
+                  alt: "Femme buvant un café devant son laptop avec Lunova autour de la taille",
                   title: "Au bureau",
                   body: "Sous ton pull, personne ne voit rien. Tu te concentres au lieu de subir.",
                 },
                 {
-                  Icon: Moon,
-                  title: "La nuit",
-                  body: "Coupure auto après 15 ou 30 minutes. Tu t’endors apaisée.",
-                },
-                {
-                  Icon: Footprints,
-                  title: "En déplacement",
-                  body: "Tu marches, tu prends le métro, tu bouges. La chaleur reste constante.",
-                },
-                {
-                  Icon: HomeIcon,
+                  image: "/product/lunova-situation-canape.jpg",
+                  alt: "Femme allongée détendue sur son canapé, Lunova activée sur le ventre",
                   title: "À la maison",
                   body: "Canapé, lit, lecture. Les jours difficiles deviennent juste des jours.",
                 },
-              ].map(({ Icon, title, body }) => (
+                {
+                  image: "/product/lunova-situation-voiture.jpg",
+                  alt: "Femme au volant de sa voiture, Lunova discrètement portée sous le tee-shirt",
+                  title: "En déplacement",
+                  body: "Tu marches, tu prends le métro, tu conduis. La chaleur reste constante.",
+                },
+                {
+                  image: "/product/lunova-situation-sortie.jpg",
+                  alt: "Femme élégante en trench beige sortant en ville, Lunova invisible sous la tenue",
+                  title: "En sortie",
+                  body: "Dîner, soirée, déjeuner. Tu y vas sans renoncer — et personne ne devine rien.",
+                },
+              ].map(({ image, alt, title, body }) => (
                 <StaggerChild key={title}>
-                  <article className="card-lift h-full rounded-xl bg-surface p-6 shadow-sm">
-                    <Icon className="mb-5 text-terracotta" size={26} strokeWidth={1.5} />
-                    <h3 className="mb-2 text-h3">{title}</h3>
-                    <p className="text-small text-foreground-muted">{body}</p>
+                  <article className="card-lift flex h-full flex-col overflow-hidden rounded-xl bg-surface shadow-sm">
+                    <div className="relative aspect-[3/2] w-full overflow-hidden">
+                      <Image
+                        src={image}
+                        alt={alt}
+                        fill
+                        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col gap-2 p-6">
+                      <h3 className="text-h3">{title}</h3>
+                      <p className="text-small text-foreground-muted">{body}</p>
+                    </div>
                   </article>
                 </StaggerChild>
               ))}
@@ -389,11 +615,14 @@ export default function Home() {
           <Container>
             <FadeIn className="mb-12 flex flex-col items-center gap-4 text-center">
               <AnimatedStars rating={5} size={22} />
-              <h2 className="max-w-[26ch]">
+              <h2 className="max-w-[28ch]">
                 {product.rating.toString().replace(".", ",")} sur 5 —{" "}
-                <Counter to={product.reviewsCount} className="tabular-nums" /> femmes
-                ont déjà témoigné.
+                <Counter to={product.reviewsCount} className="tabular-nums" /> retours
+                du programme bêta.
               </h2>
+              <p className="text-small text-foreground-muted">
+                Note moyenne cumulée · ci-dessous, {reviews.length} témoignages détaillés et non rémunérés.
+              </p>
             </FadeIn>
 
             <Stagger className="grid gap-6 md:grid-cols-3">
@@ -506,29 +735,27 @@ export default function Home() {
         <section className="section-py">
           <Container>
             <FadeIn>
-              <div className="rounded-2xl bg-noir px-8 py-16 text-center text-blanc md:px-16 md:py-20">
-                <h2 className="text-blanc mx-auto max-w-[20ch]">
+              <div className="rounded-2xl bg-terracotta-soft px-8 py-16 text-center md:px-16 md:py-20">
+                <p className="font-display text-small italic text-terracotta-deep/80 mb-4">
+                  Vis ta journée. Sans te justifier.
+                </p>
+                <h2 className="mx-auto max-w-[20ch]">
                   Tu mérites de vivre normalement pendant tes règles.
                 </h2>
-                <p className="mx-auto mt-6 max-w-lg text-blanc/70">
+                <p className="mx-auto mt-6 max-w-lg text-foreground-muted">
                   Rejoins les{" "}
-                  <Counter to={product.usersCount} className="tabular-nums text-blanc" />{" "}
+                  <Counter to={product.usersCount} className="tabular-nums" />{" "}
                   femmes qui ne renoncent plus à leur journée.
                 </p>
                 <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
                   <Button size="lg" className="breathe" asChild>
                     <Link href="/produit">Je veux me soulager — {formatPrice(product.price)}</Link>
                   </Button>
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                    className="border-blanc/40 text-blanc hover:bg-blanc hover:text-noir"
-                    asChild
-                  >
+                  <Button variant="secondary" size="lg" asChild>
                     <Link href="/avis">Voir les avis</Link>
                   </Button>
                 </div>
-                <p className="mt-8 text-small text-blanc/60">
+                <p className="mt-8 text-small text-foreground-muted">
                   Livraison offerte · Premier cycle ou remboursée · Garantie 2 ans
                 </p>
               </div>

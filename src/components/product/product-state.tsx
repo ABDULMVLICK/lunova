@@ -36,7 +36,9 @@ export function ProductStateProvider({
   defaultBundleId: string;
   children: React.ReactNode;
 }) {
-  const [imageIdx, setImageIdx] = React.useState(0);
+  const [imageIdx, setImageIdx] = React.useState(
+    colorToImageIdx[defaultColorId] ?? 0
+  );
   const [colorId, setColorIdState] = React.useState(defaultColorId);
   const [bundleId, setBundleId] = React.useState(defaultBundleId);
 

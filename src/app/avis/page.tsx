@@ -63,17 +63,22 @@ export default function AvisPage() {
             <div className="mb-12 grid gap-12 md:grid-cols-3 md:gap-16">
               {/* Synthèse */}
               <div className="md:col-span-1">
-                <Badge variant="outline" className="mb-4">Avis vérifiés</Badge>
+                <Badge variant="outline" className="mb-4">Retours bêta</Badge>
                 <h1 className="text-h2 md:text-h1 mb-4">{product.rating} / 5</h1>
                 <Stars rating={5} size={22} className="mb-3" />
                 <p className="text-foreground-muted">
-                  {product.reviewsCount.toLocaleString("fr-FR")} avis vérifiés —
-                  collectés auprès de clientes ayant acheté Lunova.
+                  Note moyenne sur{" "}
+                  {product.reviewsCount.toLocaleString("fr-FR")} retours
+                  collectés auprès des premières utilisatrices du programme bêta.
+                </p>
+                <p className="mt-3 text-small text-foreground-muted">
+                  Voici ci-dessous {reviews.length} témoignages détaillés —
+                  libres, non rémunérés.
                 </p>
 
                 <div className="mt-6 flex items-center gap-2 text-small text-foreground-muted">
                   <ShieldCheck size={16} strokeWidth={1.75} className="text-terracotta" />
-                  Avis modérés par un tiers indépendant
+                  Aucun retour n’est sponsorisé ni rémunéré
                 </div>
               </div>
 
@@ -153,8 +158,8 @@ export default function AvisPage() {
         {/* CTA */}
         <section className="pb-24">
           <Container>
-            <div className="rounded-2xl bg-noir px-8 py-16 text-center text-blanc md:px-16">
-              <h2 className="text-blanc mx-auto max-w-[22ch]">
+            <div className="rounded-2xl bg-terracotta-soft px-8 py-16 text-center md:px-16">
+              <h2 className="mx-auto max-w-[22ch]">
                 Tu veux faire partie des prochains témoignages ?
               </h2>
               <div className="mt-10">

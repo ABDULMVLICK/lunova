@@ -28,6 +28,7 @@ import { ProductGallery } from "@/components/product/product-gallery";
 import { ProductStateProvider } from "@/components/product/product-state";
 import { ShippingTimer } from "@/components/product/shipping-timer";
 import { StickyCta } from "@/components/product/sticky-cta";
+import { PaymentTrust } from "@/components/checkout/payment-trust";
 import { ProductJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { filterExistingImages } from "@/lib/media";
 import { product, formatPrice } from "@/lib/product";
@@ -39,7 +40,11 @@ export const metadata = {
     "Chaleur ciblée, 5 niveaux de température, 4 modes de massage. 157 g, discrète sous tes vêtements. Livraison offerte, premier cycle ou remboursée.",
 };
 
-export default async function ProduitPage() {
+export default async function ProduitPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ color?: string }>;
+}) {
   // Ne montre que les images qui existent vraiment dans /public/product/
   const availableImages = await filterExistingImages(product.images);
 
@@ -54,11 +59,16 @@ export default async function ProduitPage() {
     if (idx >= 0) colorToImageIdx[c.id] = idx;
   }
 
+  // Préselection depuis ?color=ivoire|rose (utilisé par la section Coloris de la home)
+  const { color } = await searchParams;
+  const requestedColor = product.colors.find((c) => c.id === color)?.id;
+  const initialColorId = requestedColor ?? product.colors[0].id;
+
   return (
     <ProductStateProvider
       images={availableImages}
       colorToImageIdx={colorToImageIdx}
-      defaultColorId={product.colors[0].id}
+      defaultColorId={initialColorId}
       defaultBundleId="solo"
     >
       <ProductJsonLd />
@@ -91,14 +101,25 @@ export default async function ProduitPage() {
                 Lunova — Ceinture chauffante intelligente
               </StaggerChild>
 
-              <StaggerChild className="flex items-center gap-3">
-                <AnimatedStars rating={5} size={18} />
-                <span className="text-small text-foreground-muted">
-                  {product.rating.toString().replace(".", ",")} / 5 ·{" "}
-                  <Link href="/avis" className="text-link underline underline-offset-2">
-                    {product.reviewsCount.toLocaleString("fr-FR")} avis vérifiés
-                  </Link>
-                </span>
+              <StaggerChild className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <div className="flex items-center gap-3">
+                  <AnimatedStars rating={5} size={18} />
+                  <span className="text-small text-foreground-muted">
+                    {product.rating.toString().replace(".", ",")} / 5 ·{" "}
+                    <Link href="/avis" className="text-link underline underline-offset-2">
+                      {product.reviewsCount.toLocaleString("fr-FR")} retours bêta
+                    </Link>
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 rounded-full bg-success-soft/60 px-3 py-1 text-small">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+                  </span>
+                  <span className="text-foreground">
+                    En stock · <span className="font-medium">{product.stock} pièces disponibles</span>
+                  </span>
+                </div>
               </StaggerChild>
 
               <StaggerChild as="p" className="text-foreground-muted text-lg">
@@ -149,6 +170,10 @@ export default async function ProduitPage() {
               <StaggerChild className="flex flex-col gap-3 pt-2">
                 <AddToCartButton fullWidth />
                 <ShippingTimer />
+              </StaggerChild>
+
+              <StaggerChild>
+                <PaymentTrust />
               </StaggerChild>
 
               <StaggerChild className="grid grid-cols-2 gap-4 rounded-xl border border-border bg-surface p-5 text-small">
@@ -281,14 +306,14 @@ export default async function ProduitPage() {
         <section className="section-py">
           <Container>
             <FadeIn>
-              <div className="rounded-2xl bg-noir px-8 py-16 text-center text-blanc md:px-16 md:py-20">
-                <h2 className="text-blanc mx-auto max-w-[22ch]">
+              <div className="rounded-2xl bg-terracotta-soft px-8 py-16 text-center md:px-16 md:py-20">
+                <h2 className="mx-auto max-w-[22ch]">
                   Prête à ne plus subir le premier jour ?
                 </h2>
                 <div className="mt-10">
                   <AddToCartButton />
                 </div>
-                <p className="mt-6 text-small text-blanc/60">
+                <p className="mt-6 text-small text-foreground-muted">
                   Livraison offerte · Premier cycle ou remboursée · Garantie 2 ans
                 </p>
               </div>

@@ -63,10 +63,9 @@ export default function NotreHistoirePage() {
               </StaggerChild>
 
               <StaggerChild as="p">
-                {/* TODO: à remplacer par ta vraie histoire fondatrice */}
                 Lunova est née d’une conversation, tard un soir, entre deux
                 amies épuisées de payer chaque mois un impôt invisible : la
-                douleur menstruelle. <strong className="text-foreground">[Remplacer par ton vrai déclencheur — l’événement précis qui t’a fait te dire « il faut faire quelque chose »]</strong>.
+                douleur menstruelle. <strong className="text-foreground">On en avait assez d’aligner les cachets, de poser des RTT, de s’excuser de ne pas être là.</strong> On voulait quelque chose qui nous laisse simplement vivre — pas un médicament de plus à avaler.
               </StaggerChild>
 
               <StaggerChild as="p">
@@ -178,8 +177,8 @@ export default function NotreHistoirePage() {
         <section className="section-py">
           <Container>
             <FadeIn>
-              <div className="rounded-2xl bg-noir px-8 py-16 text-center text-blanc md:px-16 md:py-20">
-                <h2 className="text-blanc mx-auto max-w-[22ch]">
+              <div className="rounded-2xl bg-terracotta-soft px-8 py-16 text-center md:px-16 md:py-20">
+                <h2 className="mx-auto max-w-[22ch]">
                   Rejoins celles qui ont arrêté de subir.
                 </h2>
                 <div className="mt-10">

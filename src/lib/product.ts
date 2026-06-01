@@ -59,16 +59,16 @@ export const product = {
     description: "Discrets, 8 h de chaleur, jetables. Pour les journées en déplacement.",
     price: 900,           // 9€
     socialProof: "85 % des femmes qui commandent Lunova ajoutent les patchs.",
-    image: "/product/lunova-cable.png", // placeholder en attendant un visuel patches
+    image: "/product/lunova-cable.jpg", // placeholder en attendant un visuel patches
     alt: "Patchs chauffants Lunova",
   },
   // ----- MÉDIAS HERO -----
-  // Packshot ivoire net, sur fond clair — aligné brand book "féminin
-  // sans rose bonbon" + crispness pour le hero.
+  // Composition coloris Ivoire / Rose nude sur soie — communique premium
+  // et choix dès l'arrivée.
   hero: {
     image: {
-      src: "/product/lunova-ivoire.jpg",
-      alt: "Ceinture chauffante Lunova ivoire, vue de face sur fond clair",
+      src: "/product/lunova-coloris-hero.jpg",
+      alt: "Les deux coloris Lunova — Ivoire (Élégance & pureté) et Rose nude (Douceur & harmonie), présentés sur soie",
     },
   } as {
     video?: { src: string; poster?: string; alt?: string };
@@ -80,14 +80,12 @@ export const product = {
     { src: "/product/lunova-rose.jpg", alt: "Ceinture Lunova rose nude, vue de face sur fond clair" },
     // 2. Packshot ivoire — affiché quand on clique "Ivoire"
     { src: "/product/lunova-ivoire.jpg", alt: "Ceinture Lunova ivoire, vue de face sur fond clair" },
-    // 3. Lifestyle ambiance maison — produit en situation détente
-    { src: "/product/lunova-lifestyle-rose.jpg", alt: "Femme allongée dans son lit, Lunova posée sur le ventre" },
-    // 4. Les deux coloris en duo
-    { src: "/product/lunova-coloris.jpg", alt: "Les deux coloris Lunova : ivoire et rose nude" },
+    // 3. Grille des détails — multi-angles ivoire/rose nude + bouton, port USB, boucle
+    { src: "/product/lunova-details-grid.jpg", alt: "Détails Lunova : vues multiples ivoire et rose nude, bouton de commande, port USB, boucle de la sangle" },
+    // 4. Montage caché — démo avant/après vêtement
+    { src: "/product/lunova-montage-cache.jpg", alt: "Lunova portée sous le pull soulevé puis pull rabattu — le montage devient totalement caché" },
     // 5. Avec le câble — contenu de la boîte
-    { src: "/product/lunova-cable.png", alt: "Ceinture Lunova ivoire avec son câble de recharge USB" },
-    // 6. Unboxing — emballage premium
-    { src: "/product/lunova-unboxing.jpg", alt: "Ceinture Lunova dans son écrin, à l’ouverture" },
+    { src: "/product/lunova-cable.jpg", alt: "Ceinture Lunova ivoire avec son câble de recharge USB" },
   ],
   specs: {
     chaleur: {

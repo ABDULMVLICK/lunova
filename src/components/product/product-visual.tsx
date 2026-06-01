@@ -18,21 +18,30 @@ type ProductVisualProps = {
   image?: { src: string; alt: string };
   video?: { src: string; poster?: string; alt?: string };
   ripple?: boolean;
+  aspect?: "square" | "landscape" | "portrait";
   className?: string;
   priority?: boolean;
 };
+
+const ASPECT_CLASS = {
+  square: "aspect-square",
+  landscape: "aspect-[3/2]",
+  portrait: "aspect-[4/5]",
+} as const;
 
 export function ProductVisual({
   image,
   video,
   ripple = true,
+  aspect = "square",
   className,
   priority = false,
 }: ProductVisualProps) {
   return (
     <div
       className={cn(
-        "relative aspect-square w-full overflow-hidden rounded-2xl bg-surface shadow-lg ring-1 ring-border/60",
+        "relative w-full overflow-hidden rounded-2xl bg-surface shadow-lg ring-1 ring-border/60",
+        ASPECT_CLASS[aspect],
         className
       )}
     >

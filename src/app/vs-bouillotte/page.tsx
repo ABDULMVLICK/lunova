@@ -252,11 +252,11 @@ export default function VsBouillottePage() {
         <section className="section-py">
           <Container>
             <FadeIn>
-              <div className="rounded-2xl bg-noir px-8 py-16 text-center text-blanc md:px-16 md:py-20">
-                <h2 className="text-blanc mx-auto max-w-[22ch]">
+              <div className="rounded-2xl bg-terracotta-soft px-8 py-16 text-center md:px-16 md:py-20">
+                <h2 className="mx-auto max-w-[22ch]">
                   Prête à mettre ta bouillotte au placard ?
                 </h2>
-                <p className="mx-auto mt-6 max-w-lg text-blanc/70">
+                <p className="mx-auto mt-6 max-w-lg text-foreground-muted">
                   Premier cycle ou remboursée. Si Lunova ne te change pas la
                   vie, on te rembourse intégralement.
                 </p>
