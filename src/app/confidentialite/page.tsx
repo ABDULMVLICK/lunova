@@ -15,15 +15,22 @@ export default function ConfidentialitePage() {
       title="Politique de confidentialité"
       intro="On ne collecte que ce qui sert vraiment. Voici quoi, pourquoi, et comment exercer tes droits."
     >
+      {/* TODO_LEGAL_GO_LIVE: remplacer l'adresse par celle du siège social
+          une fois l'immatriculation finalisée. */}
       <Block title="1. Qui est responsable du traitement ?">
         <p>
-          <strong>Lunova SAS</strong>, dont le siège social est situé à
-          [Adresse complète — à compléter avec les mentions légales], est
-          responsable du traitement de tes données personnelles au sens du
-          Règlement Général sur la Protection des Données (RGPD).
+          <strong>Lunova SAS</strong> (société en cours d&apos;immatriculation,
+          siège social en France) est responsable du traitement de tes
+          données personnelles au sens du Règlement Général sur la
+          Protection des Données (RGPD).
         </p>
         <p>
-          Contact privacy : <a href="mailto:privacy@lunova.fr" className="text-link underline">privacy@lunova.fr</a>
+          Pour toute question relative à tes données ou exercer tes droits,
+          écris-nous à{" "}
+          <a href="mailto:privacy@lunova.fr" className="text-link underline">
+            privacy@lunova.fr
+          </a>
+          .
         </p>
       </Block>
 

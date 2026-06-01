@@ -9,22 +9,28 @@ export default function MentionsLegalesPage() {
       title="Mentions légales"
       intro="Conformément aux dispositions de la loi pour la confiance dans l'économie numérique (LCEN), nous mettons à disposition de nos utilisateurs les informations suivantes."
     >
+      {/* TODO_LEGAL_GO_LIVE: remplacer par les vraies données d'immatriculation
+          avant le lancement officiel (capital, siège, RCS+SIREN, TVA, dirigeant) */}
       <Block title="Éditeur du site">
         <p>
-          <strong>Lunova SAS</strong> — Société par actions simplifiée au capital
-          de [X] €
+          <strong>Lunova SAS</strong> — Société par actions simplifiée
+          en cours d&apos;immatriculation au Registre du Commerce et des
+          Sociétés français.
         </p>
         <p>
-          Siège social : [Adresse complète à compléter]
+          Siège social : France
           <br />
-          RCS [Ville] — SIREN [000 000 000]
-          <br />
-          TVA intracommunautaire : FR[XX XXX XXX XXX]
+          Capital social, RCS, SIREN et TVA intracommunautaire en cours
+          d&apos;attribution — ces informations seront publiées dès la
+          finalisation de l&apos;immatriculation.
         </p>
         <p>
-          Directeur de la publication : [Nom du dirigeant]
+          Représentant légal : direction de Lunova SAS
           <br />
-          Contact : hello@lunova.fr
+          Contact éditorial :{" "}
+          <a href="mailto:hello@lunova.fr" className="text-link underline">
+            hello@lunova.fr
+          </a>
         </p>
       </Block>
 
