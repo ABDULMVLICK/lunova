@@ -6,6 +6,48 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
+    },
+    {
+      "name": "wura-app-web",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd ~/Desktop/wura-em-app && npx expo start --web --port 8082"],
+      "port": 8082
+    },
+    {
+      "name": "panel-admin",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd ~/Desktop/panel-admin-em && npm run dev"],
+      "port": 5180
+    },
+    {
+      "name": "wura-landing",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd ~/Desktop/wura-em-landing-page && npx vite --port 5190"],
+      "port": 5190
+    },
+    {
+      "name": "wura-claim",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd ~/Desktop/wura-em-claim && npx vite --port 5191"],
+      "port": 5191
+    },
+    {
+      "name": "agent-dev",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd ~/Desktop/agent && npm run dev"],
+      "port": 3030
+    },
+    {
+      "name": "alterncia-dev",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd ~/Desktop/Projets-Dev/alterncia/web && npm run dev"],
+      "port": 3000
+    },
+    {
+      "name": "groupe-sbu",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd ~/Desktop/Projets-Dev/groupe-sbu-site && python3 -m http.server 5210"],
+      "port": 5210
     }
   ]
 }
