@@ -48,6 +48,18 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-c", "cd ~/Desktop/Projets-Dev/groupe-sbu-site && python3 -m http.server 5210"],
       "port": 5210
+    },
+    {
+      "name": "nasad",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd ~/Desktop/Projets-Dev/nasad-construction-site && python3 -m http.server 5230"],
+      "port": 5230
+    },
+    {
+      "name": "monbio",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd ~/Desktop/Projets-Dev/_Archives/monbio---luxury-organic-cosmetics && npx vite --port 3040 --host"],
+      "port": 3040
     }
   ]
 }
